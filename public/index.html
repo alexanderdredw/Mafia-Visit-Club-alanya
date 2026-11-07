@@ -1,0 +1,1498 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mafia Visit Club — спортивная мафия в Махмутларе, Аланья</title>
+<meta name="description" content="Клуб спортивной мафии в кафе Visit Club Coffee &amp; Patisserie, Махмутлар, Аланья. Игры по вторникам, четвергам и субботам в 19:00. Онлайн-запись, два стола, новичкам — стол №2.">
+<meta property="og:title" content="Mafia Visit Club — спортивная мафия в Аланье">
+<meta property="og:description" content="Игры 3 раза в неделю в 19:00 в Visit Club, Махмутлар. Запишитесь онлайн.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mafia-visit-club.netlify.app/">
+<meta property="og:image" content="https://mafia-visit-club.netlify.app/img/og.jpg">
+<meta name="theme-color" content="#110c0a">
+<link rel="icon" href="/img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>:root{color-scheme:dark;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,-apple-system,"Segoe UI",sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<script src="/claude-shim.js"></script>
+</head>
+<body>
+
+
+
+
+<style>
+/* Layout: sticky top bar + hash-routed sections; the "game card" with a 10-seat table strip is the signature element. */
+:root{
+  /* Premium night club: espresso black, champagne hairlines, one wine-red accent */
+  --bg:#110c0a; --surface:#1b1411; --surface2:#231a16; --line:#33281f; --fg:#f4ebdf; --muted:#a8937f;
+  --red:#c4352b; --red-ink:#fff; --brass:#c9a66b; --ok:#5fae74; --seat:#2a201a;
+  --f-display:"Cormorant Garamond", "Times New Roman", Georgia, serif;
+  --f-body:"Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.15;margin:0}
+h2{font-size:clamp(2.1rem,5vw,3.2rem);font-weight:600;letter-spacing:-.01em}
+h3{font-size:1.45rem;font-weight:600}
+p{margin:0}
+a{color:inherit}
+button,input{font:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.label{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brass)}
+
+/* top bar */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:16px;padding-block:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto}
+.brand b{font-family:var(--f-display);font-size:1.4rem;font-weight:700;letter-spacing:.02em}
+.brand .mark-logo{height:38px;width:auto;border-radius:3px;display:block;box-shadow:0 0 0 1px rgba(201,166,107,.35)}
+nav.menu{display:flex;gap:4px;flex-wrap:wrap}
+nav.menu a{text-decoration:none;padding:6px 10px;border-radius:6px;font-weight:500;font-size:.95rem;color:var(--muted)}
+nav.menu a[aria-current="page"]{color:var(--fg);background:var(--surface);box-shadow:inset 0 -2px 0 var(--red)}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.lang button{border:0;background:transparent;color:var(--muted);padding:5px 12px;cursor:pointer;font-family:var(--f-mono);font-size:.8rem}
+.lang button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+@media (max-width:480px){.brand{gap:8px}.brand .mark-logo{height:32px}.brand b{font-size:1.12rem}.hdr-cta{padding:9px 14px}}
+.hdr-cta{white-space:nowrap}
+.burger{display:none;flex:none;width:42px;height:42px;border:1px solid var(--line);background:transparent;border-radius:4px;flex-direction:column;justify-content:center;align-items:center;gap:5px;cursor:pointer;padding:0}
+.burger span{display:block;width:18px;height:1.5px;background:var(--fg);transition:transform .25s,opacity .2s}
+header.open .burger span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+header.open .burger span:nth-child(2){opacity:0}
+header.open .burger span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+nav .lang-m{display:none}
+@media (max-width:860px){
+  .top .wrap{flex-wrap:nowrap;gap:10px}
+  nav.menu{display:none;position:absolute;left:0;right:0;top:100%;height:calc(100dvh - 100%);min-height:calc(100vh - 64px);flex-direction:column;flex-wrap:nowrap;gap:0;overflow:auto;background:var(--bg);border-top:1px solid var(--line);padding:16px max(16px,env(safe-area-inset-right,0px)) calc(32px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));z-index:9}
+  header.open nav.menu{display:flex}
+  nav.menu a{font-family:var(--f-display);font-size:1.9rem;font-weight:600;color:var(--fg);padding:14px 0;border-bottom:1px solid var(--line);border-radius:0;white-space:normal}
+  nav.menu a[aria-current="page"]{background:none;box-shadow:none;color:var(--red)}
+  nav .lang-m{display:flex;align-self:flex-start;margin-top:24px}
+  .top .wrap>.lang-d{display:none}
+  .burger{display:flex}
+}
+@media (max-width:420px){.brand b{display:none}}
+
+main section{padding-block:40px 64px}
+
+/* hero: full-bleed photo */
+.hero-full{position:relative;isolation:isolate;min-height:clamp(560px,82vh,820px);display:flex;align-items:flex-end;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero-full canvas,.hero-img{position:absolute;inset:0;width:100%;height:100%;z-index:-3}
+.hero-img{background-size:cover;background-position:center 30%;transform-origin:50% 100%;z-index:-2;opacity:0;transition:opacity .8s ease}
+.hero-img.on{opacity:1}
+.hero-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(17,12,10,.94) 0%,rgba(17,12,10,.82) 30%,rgba(17,12,10,.35) 58%,rgba(17,12,10,.1) 80%),linear-gradient(180deg,rgba(17,12,10,.55) 0%,transparent 22%,transparent 60%,var(--bg) 100%)}
+.hero-inner{position:relative;z-index:1;width:100%;padding-block:120px 56px;display:grid;grid-template-columns:1.35fr 1fr;gap:48px;align-items:end}
+.hero-inner h1{font-size:clamp(3rem,9vw,6.6rem);font-weight:600;line-height:.95;letter-spacing:-.02em;margin-top:14px}
+.hero-inner h1 em{color:var(--red);font-style:italic;font-weight:500;display:block}
+.hero-inner p.lead{font-size:1.12rem;font-weight:500;color:#f1e7da;max-width:46ch;margin-top:22px}
+.hero-inner .label{color:#dcc08c}
+.eyebrow{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px}
+.eyebrow .label{display:inline-flex;align-items:center;gap:12px;white-space:nowrap;font-size:.7rem;letter-spacing:.22em}
+.eyebrow .label::before{content:"";width:28px;height:1px;background:currentColor;opacity:.8}
+.loc-pill{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border:1px solid rgba(201,166,107,.45);border-radius:999px;background:rgba(17,12,10,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;color:#f1e7da;white-space:nowrap}
+.loc-pill i{width:6px;height:6px;border-radius:50%;background:var(--red);box-shadow:0 0 0 3px rgba(196,53,43,.25)}
+.hero-inner h1,.hero-inner p.lead,.hero-inner .label{text-shadow:0 1px 2px rgba(0,0,0,.5),0 4px 30px rgba(0,0,0,.45)}
+.hero-inner h1{color:#fbf6ef}
+.hero-inner h1 em{color:#e0473b}
+.facts{display:flex;gap:36px;flex-wrap:wrap;margin-top:28px;padding-top:20px;border-top:1px solid rgba(201,166,107,.35)}
+.facts div{display:flex;flex-direction:column;gap:2px}
+.facts strong{font-family:var(--f-display);font-size:2.1rem;font-weight:600;line-height:1;font-variant-numeric:lining-nums tabular-nums;color:#fbf6ef}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;border-radius:2px;border:1px solid rgba(244,235,223,.5);background:transparent;color:var(--fg);font-weight:700;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .2s,border-color .2s}
+.btn:hover{border-color:var(--fg)}
+.btn.primary{background:var(--red);border-color:var(--red);color:var(--red-ink)}
+.btn.primary:hover{background:#d8443a}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.small{padding:9px 16px;font-size:.75rem}
+.hero-inner .game{background:rgba(27,20,17,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+@media (max-width:860px){
+  .hero-full{min-height:0;display:block}
+  .hero-full canvas,.hero-img,.hero-shade{inset:0 0 auto 0;height:min(64vh,540px)}
+  .hero-img{background-position:center top}
+  .hero-shade{background:linear-gradient(180deg,rgba(17,12,10,.35) 0%,rgba(17,12,10,.05) 30%,rgba(17,12,10,.55) 68%,var(--bg) 100%)}
+  .hero-inner{grid-template-columns:1fr;gap:36px;padding-top:calc(min(64vh,540px) - 64px);padding-bottom:40px}
+  .hero-inner h1{margin-top:18px}
+  .hero-inner h1{font-size:clamp(2.9rem,13vw,4.2rem)}
+  .facts{gap:26px}
+}
+
+/* atmosphere gallery */
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:24px}
+.gallery figure{margin:0;aspect-ratio:4/5;max-width:100%;overflow:hidden;background:var(--surface)}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.gallery figure:hover img{transform:scale(1.04)}
+.quote{font-family:var(--f-display);font-style:italic;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.2;max-width:24ch;text-wrap:balance;margin:72px 0 64px;padding-left:24px;border-left:1px solid var(--brass)}
+
+/* admin photos */
+.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:14px}
+.photo-grid figure{margin:0;position:relative;aspect-ratio:4/5;max-width:100%;background:var(--surface);overflow:hidden}
+.photo-grid img{width:100%;height:100%;object-fit:cover}
+.photo-grid button{position:absolute;top:6px;right:6px;border:0;background:rgba(17,12,10,.8);color:var(--fg);padding:4px 9px;cursor:pointer;font-size:.8rem}
+.hero-prev{aspect-ratio:16/7;max-width:100%;background:var(--surface) center/cover;margin-top:14px;border:1px solid var(--line)}
+.upl{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
+
+/* next game card */
+.game{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.game-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.game-date{font-family:var(--f-display);font-size:1.9rem;font-weight:600;line-height:1.05}
+.game-time{font-family:var(--f-mono);color:var(--brass)}
+.seats{display:grid;grid-template-columns:repeat(10,1fr);gap:5px}
+.seat{aspect-ratio:1;max-width:100%;border-radius:50%;background:var(--seat);display:grid;place-items:center;font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.seat.taken{background:var(--fg);color:var(--bg)}
+.seat.me{background:var(--red);color:var(--red-ink)}
+.status{font-size:.9rem;color:var(--muted)}
+.status b{color:var(--fg)}
+.players{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
+.players li{font-size:.85rem;padding:3px 10px;border-radius:999px;border:1px solid var(--line);display:flex;align-items:center;gap:6px}
+.players li.wait{border-style:dashed;color:var(--muted)}
+.players li .n{font-family:var(--f-mono);color:var(--muted);font-size:.75rem}
+.players li button{border:0;background:none;color:var(--red);cursor:pointer;padding:0 2px}
+
+/* schedule grid */
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:24px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap}
+.section-head p{color:var(--muted);max-width:60ch;margin-top:8px}
+
+/* sign-in panel */
+.join{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:18px 20px;margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;align-items:end}
+.join label{display:flex;flex-direction:column;gap:4px;flex:1 1 220px}
+.join input{padding:11px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg)}
+.note{font-size:.9rem;color:var(--muted);flex-basis:100%}
+.note.warn{color:var(--red)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);padding:10px 18px;border-radius:8px;z-index:20;font-weight:500}
+
+/* evening timeline */
+.timeline{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;margin-top:24px;border-top:1px solid var(--line)}
+.timeline div{padding:16px 16px 16px 0;border-right:1px solid var(--line)}
+.timeline div:last-child{border-right:0}
+.timeline time{font-family:var(--f-display);color:var(--brass);font-size:2rem;font-weight:600}
+.timeline p{color:var(--muted);font-size:.95rem}
+
+/* roles */
+.roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:24px}
+.role{border:1px solid var(--line);border-radius:4px;padding:18px;background:var(--surface);display:flex;flex-direction:column;gap:8px}
+.role .count{font-family:var(--f-mono);font-size:.8rem}
+.role.black .count{color:var(--fg)} .role.red .count{color:var(--red)}
+.role .suit{width:28px;height:28px}
+.rules-body{display:grid;grid-template-columns:220px 1fr;gap:32px;margin-top:40px}
+.rules-body ol{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:14px;max-width:68ch}
+.rules-body h3{margin-bottom:4px}
+.rules-body .aside{color:var(--muted);font-size:.95rem}
+.rules-body>*{min-width:0}
+@media (max-width:720px){.rules-body{grid-template-columns:minmax(0,1fr);gap:14px 0;margin-top:32px}.rules-body .label{margin-top:18px}.rules-body ol{padding-left:1.4em}.gestures{grid-template-columns:repeat(2,minmax(0,1fr))}.gest{padding:14px 12px}.gest b{font-size:1.15rem}}
+
+/* news / blog */
+.posts{display:grid;gap:0;margin-top:24px}
+.post{display:grid;grid-template-columns:140px 1fr;gap:24px;padding-block:22px;border-top:1px solid var(--line)}
+.post-img{display:block;width:100%;max-width:560px;aspect-ratio:16/9;object-fit:cover;border-radius:4px;margin-bottom:14px;border:1px solid var(--line)}
+.post time{font-family:var(--f-mono);font-size:.85rem;color:var(--muted)}
+.post p{color:var(--muted);margin-top:6px;max-width:68ch}
+.post .tag{display:inline-block;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--brass);margin-bottom:6px}
+.post details summary{cursor:pointer;color:var(--red);font-weight:700;margin-top:8px}
+.post details div{margin-top:10px;display:flex;flex-direction:column;gap:10px;max-width:68ch}
+@media (max-width:600px){.post{grid-template-columns:1fr;gap:6px}}
+
+/* contacts */
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:16px;margin-top:24px}
+.contact>div{border-top:1px solid var(--brass);padding-top:14px}
+.contact .val{font-weight:700;user-select:all}
+
+.wa{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:16px;padding:16px 20px;border-radius:14px;background:var(--surface);border:1px solid var(--ok)}
+.wa p{flex:1 1 240px}
+.btn.wa-btn{background:var(--ok);border-color:var(--ok);color:var(--red-ink)}
+.check{display:flex;gap:8px;align-items:flex-start;flex-basis:100%;font-size:.9rem;color:var(--muted)}
+.check input{margin-top:4px}
+.crm-tools{display:flex;gap:10px;flex-wrap:wrap;align-items:end;margin-top:20px}
+.crm-tools select{padding:9px 10px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg)}
+.tbl{overflow-x:auto;margin-top:16px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:.92rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+td.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.pill{display:inline-block;font-size:.75rem;padding:2px 9px;border-radius:999px;border:1px solid var(--line)}
+.pill.in{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.kpis{display:flex;gap:28px;flex-wrap:wrap;margin-top:20px}
+.kpis div{display:flex;flex-direction:column}
+.kpis strong{font-family:var(--f-mono);font-size:1.5rem;font-variant-numeric:tabular-nums}
+body.admin-mode nav.menu, body.admin-mode footer{display:none}
+.adm-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.adm-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.adm-tabs button{border:1px solid var(--line);background:var(--surface);color:var(--muted);padding:7px 14px;border-radius:8px;cursor:pointer;font-weight:500}
+.adm-tabs button[aria-selected="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.composer{display:grid;grid-template-columns:260px 1fr;gap:24px;margin-top:20px}
+.composer .opts{display:flex;flex-direction:column;gap:14px}
+.composer label{display:flex;flex-direction:column;gap:4px}
+.composer select{padding:9px 10px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg)}
+.composer textarea{width:100%;min-height:300px;padding:14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--fg);font-family:var(--f-body);font-size:.95rem;line-height:1.5;resize:vertical}
+.composer .send{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.howto{margin-top:12px;font-size:.9rem;color:var(--muted);max-width:62ch}
+.denied{padding-block:60px;max-width:52ch}
+@media (max-width:720px){.composer{grid-template-columns:1fr}}
+
+/* ===== 2026 effects ===== */
+/* film grain */
+body::after{content:"";position:fixed;inset:0;z-index:30;pointer-events:none;opacity:.07;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+/* ticker */
+.ticker{overflow:hidden;border-block:1px solid var(--line);background:var(--surface);padding-block:14px;white-space:nowrap}
+.ticker-track{display:inline-flex;gap:48px;font-family:var(--f-display);font-style:italic;font-size:1.5rem;color:var(--muted)}
+.ticker-track span::after{content:"✦";margin-left:48px;color:var(--red);font-style:normal;font-size:.8rem;vertical-align:middle}
+/* spotlight cards */
+.spot{position:relative;overflow:hidden}
+.spot::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;
+  background:radial-gradient(360px circle at var(--mx,50%) var(--my,50%),rgba(201,166,107,.16),transparent 60%)}
+.spot:hover::before{opacity:1}
+/* gallery captions */
+.gallery figure{position:relative}
+.gallery figure.wide{grid-column:1/-1;aspect-ratio:5/2}
+.gallery figure.wide img{scale:1!important;translate:none!important;animation:none!important}
+@media (max-width:640px){.gallery figure.wide{aspect-ratio:16/9}}
+.gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 14px 12px;background:linear-gradient(transparent,rgba(17,12,10,.85));font-family:var(--f-display);font-style:italic;font-size:1.15rem;color:var(--fg)}
+@media (prefers-reduced-motion:no-preference){
+  .hero-img.on{animation:kenburns 22s ease-out both}
+  @keyframes kenburns{from{transform:scale(1.12)}to{transform:scale(1)}}
+  .hero-inner h1 .w{display:inline-block;animation:wordin .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i)*90ms + 150ms)}
+  @keyframes wordin{from{opacity:.0;filter:blur(12px);transform:translateY(.25em)}to{opacity:1;filter:none;transform:none}}
+  .ticker-track{animation:tick 40s linear infinite}
+  @keyframes tick{to{transform:translateX(-50%)}}
+  body::after{animation:grain 1.2s steps(6) infinite}
+  @keyframes grain{0%{background-position:0 0}20%{background-position:-40px 25px}40%{background-position:30px -45px}60%{background-position:-25px -12px}80%{background-position:45px 38px}100%{background-position:0 0}}
+  .seat.me{animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{50%{box-shadow:0 0 0 5px rgba(196,53,43,.25)}}
+  .tilt{transition:transform .25s ease;transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
+  @supports (animation-timeline: view()){
+    .reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 60%}
+    @keyframes rise{from{opacity:.6;transform:translateY(28px)}to{opacity:1;transform:none}}
+    .hero-full .hero-shade{animation:deepen linear both;animation-timeline:scroll(root);animation-range:0 600px}
+    @keyframes deepen{to{background-color:rgba(17,12,10,.55)}}
+    .hero-inner{animation:drift linear both;animation-timeline:scroll(root);animation-range:0 700px}
+    @keyframes drift{to{transform:translateY(-40px)}}
+  }
+  ::view-transition-old(root){animation:vtout .35s ease both}
+  ::view-transition-new(root){animation:vtin .45s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes vtout{to{opacity:0;transform:translateY(-12px)}}
+  @keyframes vtin{from{opacity:0;transform:translateY(16px)}}
+}
+.role-card{width:120px;max-width:100%;transform:rotate(-4deg);filter:drop-shadow(0 14px 18px rgba(0,0,0,.5));margin-bottom:8px;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.role:hover .role-card{transform:rotate(0) translateY(-6px) scale(1.04)}
+.role-card svg{display:block;width:100%;height:auto}
+.cal{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.cal .label{flex-basis:100%;color:var(--muted)}
+.cal a,.cal button{font-size:.72rem}
+.gestures{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:10px;max-width:68ch}
+.gest{display:flex;flex-direction:column;gap:4px;padding:16px;border:1px solid var(--line);border-radius:4px;background:var(--surface)}
+.gest .g-ico{font-size:1.8rem;line-height:1.2}
+.gest b{font-family:var(--f-display);font-size:1.3rem;font-weight:600}
+.gest span:last-child{color:var(--muted);font-size:.9rem}
+.modal{position:fixed;inset:0;z-index:40;display:grid;place-items:center;background:rgba(8,5,4,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:calc(16px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.modal-box{width:min(520px,100%);max-height:100%;overflow:auto;background:var(--surface);border:1px solid var(--line);border-top:2px solid var(--brass);border-radius:4px;padding:28px 24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.modal-box h3{font-size:2rem}
+.m-date{font-family:var(--f-mono);color:var(--brass);font-size:.85rem;letter-spacing:.06em}
+.m-rules{margin:4px 0 0;padding-left:1.2em;display:flex;flex-direction:column;gap:8px;font-size:.95rem}
+.m-link{color:var(--brass);font-size:.9rem}
+.m-check{padding:12px;border:1px solid var(--line);border-radius:4px;color:var(--fg);font-size:.95rem;cursor:pointer}
+.m-check input{width:18px;height:18px;accent-color:var(--red)}
+.m-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.m-actions.col{flex-direction:column}
+.m-actions.col .btn{width:100%}
+.modal-box.done{text-align:center;align-items:center}
+.done-seal{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:var(--red);color:#fff;font-size:1.8rem;box-shadow:0 0 0 8px rgba(196,53,43,.18)}
+.m-seat{font-family:var(--f-display);font-size:1.4rem}
+@media (prefers-reduced-motion:no-preference){.modal:not([hidden]) .modal-box{animation:pop .35s cubic-bezier(.2,.7,.2,1)}@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.98)}}}
+@media (max-width:600px){
+  .roles{grid-template-columns:minmax(0,1fr);gap:10px}
+  .role{display:grid;grid-template-columns:92px minmax(0,1fr);column-gap:16px;row-gap:4px;align-items:start;padding:14px}
+  .role .role-card{grid-row:1 / span 3;width:92px;margin:0;transform:rotate(-3deg)}
+  .role h3{font-size:1.3rem}
+  .role p{font-size:.92rem}
+}
+.contact .venue{font-family:var(--f-display);font-size:1.7rem;line-height:1.1}
+.contact .venue span{font-style:italic;font-size:1.15rem;color:var(--brass)}
+.contact .addr{color:var(--muted);font-size:.92rem;margin:6px 0 12px}
+.contact .phone{font-family:var(--f-mono);font-size:1.15rem;margin-bottom:10px}
+.ct-actions{display:flex;gap:8px;flex-wrap:wrap}
+.wa-group{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px;padding:20px;border:1px solid var(--ok);border-radius:4px;background:var(--surface)}
+.wa-group p{color:var(--muted);margin-top:4px;max-width:52ch}
+.wa-group .label{color:var(--ok)}
+@media (max-width:600px){.wa-group .btn{width:100%}}
+.newbie{display:flex;gap:20px;align-items:center;margin-top:28px;padding:20px 22px;border:1px solid var(--brass);border-radius:4px;background:var(--surface)}
+.newbie-no{flex:none;width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-display);font-size:2.2rem;font-weight:600;color:var(--bg);background:var(--brass);font-variant-numeric:lining-nums}
+.newbie h3{margin-top:4px}
+.newbie p{color:var(--muted);margin-top:6px;max-width:60ch}
+@media (max-width:480px){.newbie{align-items:flex-start;gap:14px;padding:16px}.newbie-no{width:48px;height:48px;font-size:1.7rem}}
+.tbl-block{display:flex;flex-direction:column;gap:8px;padding-top:12px;border-top:1px solid var(--line)}
+.tbl-head{display:flex;justify-content:space-between;gap:10px;font-size:.85rem}
+.tbl-name{color:var(--fg);font-weight:500}
+.tbl-count{font-family:var(--f-mono);color:var(--brass);font-variant-numeric:tabular-nums}
+.m-tables{border:0;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.m-tables legend{margin-bottom:8px}
+.m-opt{display:flex;gap:12px;align-items:flex-start;padding:12px;border:1px solid var(--line);border-radius:4px;cursor:pointer}
+.m-opt:has(input:checked){border-color:var(--brass);background:var(--surface2)}
+.m-opt input{margin-top:4px;width:18px;height:18px;accent-color:var(--red)}
+.m-opt span{display:flex;flex-direction:column;gap:2px}
+.m-opt small{color:var(--muted);font-size:.85rem}
+.m-opt em{font-style:normal;font-family:var(--f-mono);font-size:.75rem;color:var(--brass)}
+@media (max-width:640px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.gallery figcaption{font-size:.95rem;padding:30px 10px 10px}}
+.btn{translate:var(--bx,0) var(--by,0);transition:background .2s,border-color .2s,translate .25s cubic-bezier(.2,.7,.2,1)}
+@media (prefers-reduced-motion:no-preference){
+  #next-game .game{animation:floaty 7s ease-in-out infinite}
+  @keyframes floaty{0%,100%{translate:0 0}50%{translate:0 -9px}}
+  .loc-pill i{animation:blink 2.4s ease-in-out infinite}
+  @keyframes blink{50%{box-shadow:0 0 0 6px rgba(196,53,43,0)}}
+  @supports (animation-timeline: view()){
+    .gallery img{scale:1.14;animation:gpar linear both;animation-timeline:view()}
+    @keyframes gpar{from{translate:0 -6%}to{translate:0 6%}}
+    .role-card{animation:lift linear both;animation-timeline:view();animation-range:entry 0% cover 50%}
+    @keyframes lift{from{translate:0 40px;opacity:.4}to{translate:0 0;opacity:1}}
+  }
+}
+/* ===== year calendar ===== */
+.year-wrap{margin-top:64px}
+.yr-legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;font-size:.85rem;color:var(--muted)}
+.yr-legend>span{display:inline-flex;align-items:center;gap:8px}
+.lg{width:14px;height:14px;border-radius:50%;display:inline-block}
+.lg.open{background:var(--red)} .lg.mine{background:var(--brass)} .lg.soon{border:1px solid var(--muted)}
+.year{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;margin-top:20px}
+.month{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:16px}
+.month h3{font-size:1.35rem;text-transform:capitalize;display:flex;justify-content:space-between;align-items:baseline}
+.month h3 small{font-family:var(--f-mono);font-size:.7rem;color:var(--muted);text-transform:none;letter-spacing:.06em}
+.mgrid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;margin-top:10px}
+.mgrid .wd{font-family:var(--f-mono);font-size:.62rem;color:var(--muted);text-align:center;padding-bottom:4px;text-transform:uppercase}
+.dc{aspect-ratio:1;max-width:100%;display:grid;place-items:center;border-radius:50%;font-size:.8rem;font-variant-numeric:tabular-nums;color:var(--muted);border:1px solid transparent;background:none;padding:0;font-family:inherit}
+.dc.past{opacity:.35}
+.dc.today{border-color:var(--fg);color:var(--fg)}
+.dc.game{cursor:pointer}
+.dc.game.open{background:var(--red);color:#fff;font-weight:700}
+.dc.game.mine{background:var(--brass);color:var(--bg);font-weight:700}
+.dc.game.soon{border-color:rgba(168,147,127,.55);color:var(--fg)}
+.dc.game.past{background:none;border-color:transparent;color:var(--muted);cursor:default}
+.dc.game:not(.past):hover{transform:scale(1.12)}
+@media (prefers-reduced-motion:no-preference){.dc{transition:transform .15s}}
+.game.flash{outline:2px solid var(--brass);outline-offset:4px}
+@media (max-width:600px){
+  .year{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:10px;margin-left:calc(-1 * max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1 * max(16px,env(safe-area-inset-right,0px)));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));scroll-padding-left:max(16px,env(safe-area-inset-left,0px))}
+  .month{flex:0 0 84%;scroll-snap-align:start}
+}
+.adm-login{display:flex;flex-direction:column;gap:10px;margin-top:20px;max-width:360px}
+.adm-login input{padding:12px;border-radius:4px;border:1px solid var(--line);background:var(--surface);color:var(--fg);font:inherit}
+footer{border-top:1px solid var(--line);padding-block:24px;color:var(--muted);font-size:.85rem}
+.foot{display:flex;flex-direction:column;gap:16px}
+.foot-actions{display:flex;gap:10px;flex-wrap:wrap}
+.credit{padding-top:14px;border-top:1px solid var(--line);font-size:.8rem}
+.credit a{color:var(--brass);text-decoration:none;border-bottom:1px solid rgba(201,166,107,.4)}
+.credit a:hover{color:var(--fg)}
+.link-cancel{margin-top:14px;background:none;border:0;padding:4px 0;color:#d9cbb8;font:inherit;font-size:.9rem;text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(201,166,107,.6);cursor:pointer}
+.link-cancel:hover{color:var(--fg)}
+.mc-list{display:flex;flex-direction:column;gap:10px}
+.mc-item{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px;border:1px solid var(--line);border-radius:4px}
+.mc-item b{font-family:var(--f-display);font-size:1.25rem;font-weight:600;display:block}
+.mc-item small{color:var(--muted);font-family:var(--f-mono);font-size:.78rem}
+.mc-confirm{flex-basis:100%;display:flex;gap:8px;align-items:center;flex-wrap:wrap;color:var(--fg);font-size:.92rem}
+.mc-empty{color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.seat{transition:background .25s}}
+</style>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="#home">
+    <img class="mark-logo" src="/img/1a0243264a.jpg" alt="Visit Club Coffee &amp; Patisserie" width="286" height="120">
+    <b>Mafia Visit Club</b>
+  </a>
+  <nav class="menu" id="main-menu" aria-label="Menu">
+    <a href="#home" data-i="nav_home"></a>
+    <a href="#schedule" data-i="nav_schedule"></a>
+    <a href="#rules" data-i="nav_rules"></a>
+    <a href="#news" data-i="nav_news"></a>
+    <a href="#blog" data-i="nav_blog"></a>
+    <a href="#contacts" data-i="nav_contacts"></a>
+    <div class="lang lang-m" role="group" aria-label="Language">
+      <button id="lang-ru-m" type="button" data-lang="ru">RU</button>
+      <button id="lang-tr-m" type="button" data-lang="tr">TR</button>
+    </div>
+  </nav>
+  <div class="lang lang-d" role="group" aria-label="Language">
+    <button id="lang-ru" type="button" data-lang="ru">RU</button>
+    <button id="lang-tr" type="button" data-lang="tr">TR</button>
+  </div>
+  <a class="btn primary small hdr-cta" href="#schedule" data-i="hdr_cta"></a>
+  <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></header>
+
+<main>
+<!-- HOME -->
+<section id="v-home" class="view" style="padding-block:0 64px">
+  <div class="hero-full">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-img" id="hero-img" role="img" aria-label="Mafia Visit Club"></div>
+    <div class="hero-shade"></div>
+    <div class="wrap hero-inner">
+      <div>
+        <div class="eyebrow"><span class="label" data-i="hero_kicker"></span><span class="loc-pill"><i aria-hidden="true"></i><span data-i="hero_loc"></span></span></div>
+        <h1 data-ih="hero_title"></h1>
+        <p class="lead" data-i="hero_lead"></p>
+        <div class="facts">
+          <div><strong>19:00</strong><span class="label" data-i="fact_time"></span></div>
+          <div><strong id="fact-days"></strong><span class="label" data-i="fact_days"></span></div>
+          <div><strong>10</strong><span class="label" data-i="fact_seats"></span></div>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="#schedule" data-i="cta_join"></a>
+          <a class="btn" href="#rules" data-i="cta_rules"></a>
+        </div>
+        <button type="button" class="link-cancel js-cancel" data-i="cancel_cta"></button>
+      </div>
+      <div id="next-game"></div>
+    </div>
+  </div>
+<div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
+<div class="wrap">
+  <p class="quote reveal" data-i="quote"></p>
+  <div style="margin-top:48px">
+    <div class="label" data-i="eve_kicker"></div>
+    <h2 data-i="eve_title"></h2>
+    <div class="timeline reveal">
+      <div><time>18:45</time><p data-i="eve_1"></p></div>
+      <div><time>19:00</time><p data-i="eve_2"></p></div>
+      <div><time>19:15</time><p data-i="eve_3"></p></div>
+      <div><time>~22:00</time><p data-i="eve_4"></p></div>
+    </div>
+  </div>
+  <div id="gallery-wrap" hidden style="margin-top:64px">
+    <div class="label" data-i="gal_kicker"></div><h2 data-i="gal_title"></h2>
+    <div class="gallery reveal" id="gallery"></div>
+  </div>
+</div></section>
+
+<!-- SCHEDULE -->
+<section id="v-schedule" class="view" hidden><div class="wrap">
+  <div class="section-head">
+    <div><div class="label" data-i="sch_kicker"></div><h2 data-i="sch_title"></h2><p data-i="sch_lead"></p></div>
+  </div>
+  <form class="join" id="join-form">
+    <label for="nick"><span class="label" data-i="nick_label"></span>
+      <input id="nick" maxlength="40" autocomplete="nickname" required>
+    </label>
+    <label for="phone"><span class="label" data-i="phone_label"></span>
+      <input id="phone" type="tel" inputmode="tel" maxlength="20" autocomplete="tel" placeholder="+90 5xx xxx xx xx">
+    </label>
+    <label class="check" for="consent"><input type="checkbox" id="consent"><span data-i="consent"></span></label>
+    <p class="note" id="db-note" data-i="db_loading"></p>
+  </form>
+  <div class="wa" id="wa-box" hidden>
+    <p data-i="wa_text"></p>
+    <a class="btn wa-btn" id="wa-link" target="_blank" rel="noopener" data-i="wa_btn"></a>
+  </div>
+  <div class="grid3" id="games"></div>
+  <div class="year-wrap">
+    <div class="section-head"><div><div class="label" data-i="yr_kicker"></div><h2 data-i="yr_title"></h2><p data-i="yr_lead"></p></div></div>
+    <div class="yr-legend"><span><i class="lg open"></i><span data-i="yr_l_open"></span></span><span><i class="lg mine"></i><span data-i="yr_l_mine"></span></span><span><i class="lg soon"></i><span data-i="yr_l_soon"></span></span></div>
+    <div class="year" id="year"></div>
+  </div>
+</div></section>
+
+<!-- RULES -->
+<section id="v-rules" class="view" hidden><div class="wrap">
+  <div class="label" data-i="rules_kicker"></div>
+  <h2 data-i="rules_title"></h2>
+  <p style="color:var(--muted);margin-top:8px;max-width:62ch" data-i="rules_lead"></p>
+  <div class="roles reveal">
+    <div class="role red"><div class="role-card"><svg viewBox="0 0 250 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CITIZEN">
+<defs><linearGradient id="gcitizen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a3231b"/><stop offset=".6" stop-color="#7d1712"/></linearGradient></defs>
+<rect x="2" y="2" width="246" height="346" rx="18" fill="url(#gcitizen)" stroke="#ffffff" stroke-opacity=".35" stroke-width="2"/>
+<rect x="16" y="16" width="218" height="318" rx="10" fill="none" stroke="#ffffff" stroke-width="2"/>
+</svg></div><span class="count" data-i="r_civ_n"></span><h3 data-i="r_civ"></h3><p data-i="r_civ_d"></p></div>
+    <div class="role red"><div class="role-card"><svg viewBox="0 0 250 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SHERIFF">
+<defs><linearGradient id="gsheriff" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a3231b"/><stop offset=".6" stop-color="#7d1712"/></linearGradient></defs>
+<rect x="2" y="2" width="246" height="346" rx="18" fill="url(#gsheriff)" stroke="#c9a66b" stroke-opacity=".5" stroke-width="2"/>
+<rect x="16" y="16" width="218" height="318" rx="10" fill="none" stroke="#c9a66b" stroke-width="1.5"/>
+<text x="30" y="52" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="26" fill="#f6efe6">S</text>
+<text font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="26" fill="#f6efe6" transform="translate(220 298) rotate(180)">S</text>
+
+<text x="125" y="186" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="30" letter-spacing="3" fill="#ffffff">SHERIFF</text>
+</svg></div><span class="count" data-i="r_sh_n"></span><h3 data-i="r_sh"></h3><p data-i="r_sh_d"></p></div>
+    <div class="role black"><div class="role-card"><svg viewBox="0 0 250 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MAFIA">
+<defs><linearGradient id="gmafiaplain" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#221a16"/><stop offset=".6" stop-color="#0e0b0a"/></linearGradient></defs>
+<rect x="2" y="2" width="246" height="346" rx="18" fill="url(#gmafiaplain)" stroke="#ffffff" stroke-opacity=".35" stroke-width="2"/>
+<rect x="16" y="16" width="218" height="318" rx="10" fill="none" stroke="#ffffff" stroke-width="2"/>
+</svg></div><span class="count" data-i="r_maf_n"></span><h3 data-i="r_maf"></h3><p data-i="r_maf_d"></p></div>
+    <div class="role black"><div class="role-card"><svg viewBox="0 0 250 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BOSS">
+<defs><linearGradient id="gboss" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#221a16"/><stop offset=".6" stop-color="#0e0b0a"/></linearGradient></defs>
+<rect x="2" y="2" width="246" height="346" rx="18" fill="url(#gboss)" stroke="#c9a66b" stroke-opacity=".5" stroke-width="2"/>
+<rect x="16" y="16" width="218" height="318" rx="10" fill="none" stroke="#c9a66b" stroke-width="1.5"/>
+<text x="30" y="52" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="26" fill="#f6efe6">B</text>
+<text font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="26" fill="#f6efe6" transform="translate(220 298) rotate(180)">B</text>
+
+<text x="125" y="193" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="52" letter-spacing="4" fill="#ffffff">BOSS</text>
+</svg></div><span class="count" data-i="r_don_n"></span><h3 data-i="r_don"></h3><p data-i="r_don_d"></p></div>
+  </div>
+  <div class="newbie reveal"><span class="newbie-no">2</span><div><div class="label" data-i="nb_kicker"></div><h3 data-i="nb_title"></h3><p data-i="nb_text"></p></div></div>
+  <div class="rules-body">
+    <div class="label" data-i="rules_flow"></div>
+    <ol>
+      <li><h3 data-i="s1_t"></h3><p data-i="s1"></p></li>
+      <li><h3 data-i="s2_t"></h3><p data-i="s2"></p></li>
+      <li><h3 data-i="s3_t"></h3><p data-i="s3"></p></li>
+      <li><h3 data-i="s4_t"></h3><p data-i="s4"></p></li>
+      <li><h3 data-i="s5_t"></h3><p data-i="s5"></p></li>
+      <li><h3 data-i="s6_t"></h3><p data-i="s6"></p></li>
+    </ol>
+    <div class="label" data-i="g_title"></div>
+    <div>
+      <p class="aside" style="margin-bottom:14px" data-i="g_lead"></p>
+      <div class="gestures">
+        <div class="gest"><span class="g-ico" aria-hidden="true">👍👍</span><b data-i="g1_t"></b><span data-i="g1"></span></div>
+        <div class="gest"><span class="g-ico" aria-hidden="true">👎👎</span><b data-i="g2_t"></b><span data-i="g2"></span></div>
+        <div class="gest"><span class="g-ico" aria-hidden="true">👌</span><b data-i="g3_t"></b><span data-i="g3"></span></div>
+        <div class="gest"><span class="g-ico" aria-hidden="true">💍</span><b data-i="g4_t"></b><span data-i="g4"></span></div>
+      </div>
+    </div>
+    <div class="label" data-i="rules_etiq"></div>
+    <div class="aside"><p data-i="etiq"></p></div>
+  </div>
+</div></section>
+
+<!-- NEWS -->
+<section id="v-news" class="view" hidden><div class="wrap">
+  <div class="label" data-i="news_kicker"></div><h2 data-i="news_title"></h2>
+  <div class="posts" id="news-list"></div>
+</div></section>
+
+<!-- BLOG -->
+<section id="v-blog" class="view" hidden><div class="wrap">
+  <div class="label" data-i="blog_kicker"></div><h2 data-i="blog_title"></h2>
+  <div class="posts" id="blog-list"></div>
+</div></section>
+
+<!-- CONTACTS -->
+<section id="v-contacts" class="view" hidden><div class="wrap">
+  <div class="label" data-i="ct_kicker"></div><h2 data-i="ct_title"></h2>
+  <div class="contact">
+    <div><div class="label" data-i="ct_place"></div><p class="val venue">Visit Club<br><span>Coffee &amp; Patisserie</span></p><p class="addr">Mahmutlar Mah. Barbaros Cad., Çakır Rezidans B Blok 187 B/F, Alanya</p><a class="btn small" href="https://www.google.com/maps/search/?api=1&query=Visit%20Club%20Coffee%20%26%20Patisserie%2C%20Barbaros%20Cad.%20%C3%87ak%C4%B1r%20Rezidans%2C%20Mahmutlar%2C%20Alanya" target="_blank" rel="noopener" data-i="ct_map"></a></div>
+    <div><div class="label" data-i="ct_when"></div><p class="val" id="ct-when"></p><p class="addr" data-i="ct_when_note"></p></div>
+    <div><div class="label" data-i="ct_phone"></div><p class="val phone" id="ct-phone">+90 539 384 10 09</p>
+      <div class="ct-actions"><a class="btn small wa-btn" href="https://wa.me/905393841009" target="_blank" rel="noopener">WhatsApp</a><button type="button" class="btn small" id="copy-phone" data-i="ct_copy"></button></div></div>
+    <div><div class="label">Instagram</div><p class="val phone">@visit_club.alanya</p>
+      <div class="ct-actions"><a class="btn small" href="https://www.instagram.com/visit_club.alanya/" target="_blank" rel="noopener" data-i="ct_ig"></a></div></div>
+  </div>
+  <div class="wa-group">
+    <div><div class="label" data-i="ct_group"></div><p data-i="ct_group_d"></p></div>
+    <a class="btn wa-btn" id="ct-group-link" target="_blank" rel="noopener" data-i="ct_group_btn"></a>
+  </div>
+</div></section>
+<section id="v-admin" class="view" hidden><div class="wrap">
+ <div id="adm-denied" class="denied" hidden>
+   <div class="label" data-i="adm_kicker"></div><h2 data-i="adm_denied_t"></h2>
+   <p style="color:var(--muted);margin-top:10px" data-i="adm_denied"></p>
+   <a class="btn small" style="margin-top:20px" href="#home" data-i="back_site"></a>
+ </div>
+ <div id="adm-panel" hidden>
+  <div class="adm-bar">
+    <div><div class="label" data-i="adm_kicker"></div><h2 data-i="adm_title"></h2></div>
+    <div class="adm-tabs" role="tablist">
+      <button type="button" role="tab" id="tab-crm" data-tab="crm" data-i="tab_crm"></button>
+      <button type="button" role="tab" id="tab-msg" data-tab="msg" data-i="tab_msg"></button>
+      <button type="button" role="tab" id="tab-photo" data-tab="photo" data-i="tab_photo"></button>
+      <a class="btn small" href="#home" data-i="back_site"></a>
+    </div>
+  </div>
+  <div class="crm-tools" style="margin-top:0">
+    <label for="adm-game" style="display:flex;flex-direction:column;gap:4px"><span class="label" data-i="adm_game"></span><select id="adm-game"></select></label>
+  </div>
+
+  <div id="pane-crm">
+    <div class="kpis">
+      <div><strong id="k-players">0</strong><span class="label" data-i="k_players"></span></div>
+      <div><strong id="k-game">0</strong><span class="label" data-i="k_game"></span></div>
+      <div><strong id="k-wait">0</strong><span class="label" data-i="k_wait"></span></div>
+    </div>
+    <div class="crm-tools">
+      <button class="btn small" type="button" id="copy-phones" data-i="copy_phones"></button>
+    </div>
+    <div class="tbl"><table>
+      <thead><tr><th>#</th><th data-i="th_name"></th><th data-i="th_phone"></th><th data-i="th_status"></th><th data-i="th_games"></th><th data-i="th_when"></th><th></th></tr></thead>
+      <tbody id="adm-rows"></tbody>
+    </table></div>
+    <div class="label" style="margin-top:36px" data-i="adm_all"></div>
+    <div class="tbl"><table>
+      <thead><tr><th data-i="th_name"></th><th data-i="th_phone"></th><th data-i="th_games"></th><th data-i="th_next"></th><th></th></tr></thead>
+      <tbody id="adm-base"></tbody>
+    </table></div>
+  </div>
+
+  <div id="pane-photo" hidden>
+    <div class="label" style="margin-top:12px" data-i="ph_hero"></div>
+    <div class="hero-prev" id="hero-prev"></div>
+    <div class="upl"><input type="file" id="up-hero" accept="image/*"><span class="note" id="up-hero-st"></span></div>
+    <div class="label" style="margin-top:36px" data-i="ph_gal"></div>
+    <div class="upl"><input type="file" id="up-gal" accept="image/*" multiple><span class="note" id="up-gal-st"></span></div>
+    <div class="photo-grid" id="adm-gal"></div>
+    <p class="howto" data-i="ph_how"></p>
+  </div>
+  <div id="pane-msg" hidden>
+    <div class="composer">
+      <div class="opts">
+        <label for="msg-type"><span class="label" data-i="msg_type"></span>
+          <select id="msg-type">
+            <option value="announce" data-i="mt_announce"></option>
+            <option value="lineup" data-i="mt_lineup"></option>
+            <option value="remind" data-i="mt_remind"></option>
+            <option value="free" data-i="mt_free"></option>
+          </select></label>
+        <label for="msg-lang"><span class="label" data-i="msg_lang"></span>
+          <select id="msg-lang"><option value="ru">Русский</option><option value="tr">Türkçe</option><option value="both">RU + TR</option></select></label>
+        <p class="howto" data-i="msg_how"></p>
+      </div>
+      <div>
+        <label for="msg-text" class="label" data-i="msg_text"></label>
+        <textarea id="msg-text"></textarea>
+        <div class="send">
+          <a class="btn wa-btn" id="msg-send" target="_blank" rel="noopener" data-i="msg_send"></a>
+          <button class="btn" type="button" id="msg-copy" data-i="msg_copy"></button>
+          <button class="btn" type="button" id="msg-reset" data-i="msg_reset"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+ </div>
+</div></section>
+</main>
+
+<footer><div class="wrap foot">
+  <div class="foot-actions">
+    <a class="btn primary small" href="#schedule" data-i="hdr_cta"></a>
+    <button type="button" class="btn small js-cancel" data-i="cancel_cta"></button>
+  </div>
+  <p data-i="footer"></p>
+  <p class="credit">© 2026 · <span data-i="credit"></span> <a href="https://www.instagram.com/fortuna.key.viktoriya/" target="_blank" rel="noopener">Fortuna Group</a></p>
+</div></footer>
+<div class="toast" id="toast" hidden></div>
+<div class="modal" id="m-rules" hidden role="dialog" aria-modal="true" aria-labelledby="mr-title">
+  <div class="modal-box">
+    <div class="label" data-i="mr_kicker"></div>
+    <h3 id="mr-title" data-i="mr_title"></h3>
+    <p class="m-date" id="mr-date"></p>
+    <ol class="m-rules">
+      <li data-i="mr_1"></li><li data-i="mr_2"></li><li data-i="mr_3"></li><li data-i="mr_4"></li><li data-i="mr_5"></li><li data-i="mr_6"></li>
+    </ol>
+    <a class="m-link" href="#rules" id="mr-full" data-i="mr_full"></a>
+    <fieldset class="m-tables"><legend class="label" data-i="mt_q"></legend>
+      <label class="m-opt" for="mt-2"><input type="radio" name="mt" id="mt-2" value="2"><span><b data-i="mt_2t"></b><small data-i="mt_2"></small><em id="mt-2-free"></em></span></label>
+      <label class="m-opt" for="mt-1"><input type="radio" name="mt" id="mt-1" value="1"><span><b data-i="mt_1t"></b><small data-i="mt_1"></small><em id="mt-1-free"></em></span></label>
+    </fieldset>
+    <label class="check m-check" for="mr-ok"><input type="checkbox" id="mr-ok"><span data-i="mr_ok"></span></label>
+    <div class="m-actions">
+      <button type="button" class="btn primary" id="mr-go" disabled data-i="join"></button>
+      <button type="button" class="btn" id="mr-cancel" data-i="mr_cancel"></button>
+    </div>
+  </div>
+</div>
+<div class="modal" id="m-cancel" hidden role="dialog" aria-modal="true" aria-labelledby="mc-title">
+  <div class="modal-box">
+    <div class="label" data-i="mc_kicker"></div>
+    <h3 id="mc-title" data-i="mc_title"></h3>
+    <div id="mc-body" class="mc-list"></div>
+    <div class="m-actions col" id="mc-actions"></div>
+  </div>
+</div>
+<div class="modal" id="m-done" hidden role="dialog" aria-modal="true" aria-labelledby="md-title">
+  <div class="modal-box done">
+    <div class="done-seal" aria-hidden="true">✓</div>
+    <h3 id="md-title" data-i="md_title"></h3>
+    <p class="m-date" id="md-date"></p>
+    <p class="m-seat" id="md-seat"></p>
+    <p class="note" data-i="md_note"></p>
+    <div class="m-actions col" id="md-actions"></div>
+  </div>
+</div>
+
+<script>
+/* ---------- settings: edit these ---------- */
+const CONFIG = {
+  gameDays: [2, 4, 6],   // 0=Sun … 6=Sat → Tue, Thu, Sat
+  time: "19:00",
+  seats: 10,
+  waitlist: 6,
+  bookDays: 30,          // booking opens 30 days ahead; the list rolls forward every day
+  yearMonths: 12,
+  adminPhone: "905012890755",
+  whatsappGroup: "https://chat.whatsapp.com/IFEh6lnoCcD1uSGbncLLl4",  // invite link of your WhatsApp group
+  siteUrl: "https://mafia-visit-club.netlify.app",  // public registration link used in messages
+  place: { ru: "Visit Club Coffee & Patisserie — Mahmutlar Mah. Barbaros Cad., Çakır Rezidans B Blok 187 B/F, Alanya", tr: "Visit Club Coffee & Patisserie — Mahmutlar Mah. Barbaros Cad., Çakır Rezidans B Blok 187 B/F, Alanya" },
+  utcOffset: 3,          // Turkey, UTC+3 all year
+  durationHours: 3,
+  remindMinutes: 120     // reminder 2 hours before
+};
+
+const T = {
+ru:{
+ nav_home:"Главная",nav_schedule:"Запись",nav_rules:"Правила",nav_news:"Новости",nav_blog:"Блог",nav_contacts:"Контакты",hdr_cta:"Записаться",yr_kicker:"Календарь на год",yr_title:"Все игры года",yr_lead:"Игры каждый вторник, четверг и субботу в 19:00. Запись открывается за месяц до игры — нажмите на красную дату, чтобы записаться.",yr_l_open:"запись открыта",yr_l_mine:"вы записаны",yr_l_soon:"запись откроется позже",yr_locked:"Запись на {d} откроется {o}",yr_games:"{n} игр",credit:"Разработка сайта —",cancel_cta:"Отменить запись",mc_kicker:"Мои записи",mc_title:"Отменить запись",mc_empty:"У вас пока нет записей на ближайшие игры.",mc_cancel:"Отменить",mc_sure:"Точно отменить?",mc_yes:"Да, отменить",mc_no:"Нет",mc_done:"Запись отменена. Место освободилось для следующего игрока.",mc_notify:"Сообщить организатору",mc_msg:"❌ Отмена: Мафия {d}, стол {t} — {name}",mc_close:"Закрыть",mc_signin:"Отменить запись можно после входа. Или напишите организатору в WhatsApp.",notify_btn:"Сообщить организатору",notify_msg:"✅ Мафия {d}, стол {t}, {seat} — {name}",notify_hint:"Нажмите «Сообщить организатору» — откроется WhatsApp с готовым сообщением, останется нажать «Отправить».",seat_n:"место {n}",seat_w:"ожидание {n}",
+ hero_kicker:"Клуб спортивной мафии",hero_loc:"Visit Club · Махмутлар",
+ hero_title:"Город засыпает. <em>Просыпается мафия.</em>",
+ hero_lead:"Три вечера в неделю мы собираемся за одним столом в кафе Visit Club Coffee & Patisserie в Махмутларе: 10 игроков, ведущий, кофе и ни одного честного лица. Новичков учим прямо за игрой.",
+ fact_time:"начало",fact_days:"дни игр",fact_seats:"мест за столом",
+ cta_join:"Записаться на игру",cta_rules:"Как играть",
+ eve_kicker:"Как проходит вечер",eve_title:"Один вечер — три партии",
+ eve_1:"Приходим, берём кофе, знакомимся. Новичкам ведущий коротко объясняет правила.",
+ eve_2:"Рассадка по номерам, раздача ролей. Первая партия.",
+ eve_3:"Партия идёт около 45 минут. Между играми — короткий перерыв и разбор.",
+ eve_4:"Итоги вечера, лучший игрок, фото на память.",
+ next:"Ближайшая игра",
+ sch_kicker:"Календарь игр",sch_title:"Запишитесь за стол",
+ sch_lead:"Выберите вечер и нажмите «Записаться». За столом 10 мест, дальше — лист ожидания: если кто-то отменит, вы займёте его место.",
+ nick_label:"Ваше имя или игровой ник",
+ db_loading:"Загружаем список игроков…",
+ db_ok:"Список обновляется для всех в реальном времени. Отменить запись можно в любой момент.",
+ db_off:"Онлайн-запись здесь недоступна. Напишите организатору в WhatsApp +90 501 289 07 55 — он внесёт вас в список.",
+ db_slow:"Список пока не загрузился. Обновите страницу чуть позже.",
+ join:"Записаться",leave:"Отменить запись",full_wait:"В лист ожидания",
+ need_nick:"Сначала впишите имя или ник выше.",
+ joined:"Вы записаны. До встречи!",left:"Запись отменена.",err:"Не получилось сохранить. Попробуйте ещё раз.",
+ st_free:"Свободно <b>{n}</b> из {t}",st_full:"Стол собран · ожидание: <b>{n}</b>",st_empty:"Пока никого — будьте первым",
+ you_in:"Вы за столом №{t} · место {n}",you_wait:"Стол №{t} · вы в листе ожидания: {n}",tbl1:"Стол №1 · основной",tbl2:"Стол №2 · новички и обучение",
+ today:"Сегодня",tomorrow:"Завтра",
+ rules_kicker:"Правила",rules_title:"Спортивная мафия за 5 минут",
+ rules_lead:"Играем по классическим правилам спортивной мафии: 10 игроков, ведущий, фиксированные роли и регламент речей. Город (красные) против мафии (чёрные).",
+ r_civ:"Мирный житель",r_civ_n:"6 карт · красные",r_civ_d:"Не знает ничего, кроме своей роли. Побеждает логикой, наблюдением и голосованием.",
+ r_sh:"Шериф",r_sh_n:"1 карта · красные",r_sh_d:"Каждую ночь ищет босса мафии: проверяет одного игрока, и ведущий жестом показывает его роль.",
+ r_maf:"Мафия",r_maf_n:"2 карты · чёрные",r_maf_d:"Знает своих в первую ночь. Ночью вместе с боссом выбирает, кого убить.",
+ r_don:"Босс мафии",r_don_n:"1 карта · чёрные",r_don_d:"Глава мафии. В нулевую ночь показывает себя жестом на кольцо и решает, кого убить в первые 3 ночи. Ночью ищет шерифа своими проверками.",
+ rules_flow:"Ход игры",
+ s1_t:"Раздача ролей",s1:"Игроки садятся по номерам 1–10 и тайно получают карты. Все надевают маски или закрывают глаза по команде ведущего.",
+ s2_t:"Нулевая ночь",s2:"Мафия молча знакомится. Босс показывает себя — указывает на кольцо на руке. Именно босс решает, кого убивать в первые 3 ночи, и жестами показывает своим 3 номера по порядку. Затем просыпается шериф, чтобы ведущий его узнал. В эту ночь никого не убивают.",
+ s3_t:"День: речи",s3:"Каждый по очереди говорит 1 минуту. Во время речи можно выставить одного игрока на голосование.",
+ s4_t:"Голосование",s4:"Выставленные кандидаты получают голоса. Ушедший по голосованию говорит последнюю речь (1 минута) и покидает стол.",
+ s5_t:"Ночь",s5:"Все игроки сидят с закрытыми глазами. Первые 3 ночи мафия стреляет по жертвам, которых босс выбрал в нулевую ночь. Выстрел — согнутые пальцы, показывающие номер жертвы, и все игроки мафии должны выстрелить одновременно. Если все чёрные выстрелили вместе в один номер — мирный житель убит; если кто-то опоздал или показал другой номер — промах, и тот, в кого стреляли, остаётся жив. Затем босс мафии ищет шерифа, а шериф ищет босса мафии: каждый проверяет одного игрока, и ведущий жестом показывает его роль (жесты — ниже).",
+ s6_t:"Победа",s6:"Красные побеждают, когда за столом не осталось чёрных. Чёрные — когда их становится столько же, сколько красных.",
+ nb_kicker:"Новичкам",nb_title:"Первая игра — за столом №2",nb_text:"В первый раз новички садятся за стол №2 — он для знакомства и обучения. Ведущий объясняет правила по ходу игры и подсказывает, а когда освоитесь — добро пожаловать за основной стол.",
+ mr_6:"Если вы играете впервые — вас ждёт стол №2 для знакомства и обучения.",
+ g_title:"Жесты ведущего",
+ g_lead:"Ночью ведущий отвечает на проверки босса мафии и шерифа без слов — только жестами:",
+ g1_t:"Мирный житель",g1:"два больших пальца вверх",
+ g2_t:"Мафия",g2:"два больших пальца вниз",
+ g3_t:"Шериф",g3:"жест «ОК» руками",
+ g4_t:"Босс мафии",g4:"касается пальца другой рукой, будто надевает кольцо",
+ rules_etiq:"Фолы и этикет",
+ etiq:"Каждому игроку — ровно минута, и в эту минуту говорит только он. Без клятв и подглядываний. Перебил того, кому дали слово, — штраф 200 лир на общий чай для стола ☕. За нарушения — фолы: на третьем игрок пропускает следующую речь, на четвёртом удаляется. Телефоны на столе экраном вниз.",
+ news_kicker:"Что нового",news_title:"Новости клуба",
+ blog_kicker:"Читать",blog_title:"Блог: как играть сильнее",
+ more:"Читать полностью",sample:"пример",
+ ct_kicker:"Как нас найти",ct_title:"Контакты",ct_place:"Где",ct_place_v:"Visit Club Coffee & Patisserie, Mahmutlar Mah. Barbaros Cad., Çakır Rezidans B Blok 187 B/F, Alanya",ct_map:"Открыть на карте",ct_group:"Группа WhatsApp для записи на игру",ct_group_d:"В группе — анонсы игр, рассадка, напоминания и новости клуба.",ct_group_btn:"Перейти в группу",ct_phone:"Телефон и WhatsApp",ct_copy:"Копировать номер",ct_ig:"Открыть Instagram",ct_when_note:"Сбор с 18:45",ct_when:"Когда",
+ ct_note:"Корпоративные игры, дни рождения и игры на английском — по договорённости. Напишите нам в WhatsApp.",
+ footer:"Mafia Visit Club · Visit Club Coffee & Patisserie, Махмутлар, Аланья · игры на русском и турецком · 18+ рекомендуется, подросткам — со взрослыми",
+ days_sep:" · ",
+ adm_denied_t:"Вход только для администратора",adm_denied:"Введите пароль администратора, чтобы открыть записи, телефоны и рассылку.",back_site:"← На сайт",
+ mr_kicker:"Перед записью",mr_title:"Правила стола",
+ mr_1:"Каждому игроку — ровно минута. Перебил того, кому дали слово, — 200 лир на общий чай ☕.",
+ mr_2:"Ночью все сидят с закрытыми глазами. Подглядывать нельзя.",
+ mr_3:"Без клятв. Телефоны на столе экраном вниз.",
+ mr_4:"Приходите к 18:45 — начинаем ровно в 19:00.",
+ mr_5:"Не сможете прийти — отмените запись на сайте, чтобы место занял следующий.",
+ mr_full:"Читать полные правила →",mr_ok:"Я прочитал(а) правила и понял(а) их",mr_cancel:"Отмена",
+ md_title:"Вы записаны!",md_seat:"Стол №{t} · место №{n}",md_wait:"Стол №{t} собран — вы в листе ожидания: {n}",
+ mt_q:"За какой стол?",mt_2t:"Стол №2 — я играю впервые",mt_2:"Знакомство и обучение: ведущий подсказывает по ходу игры.",mt_1t:"Стол №1 — я уже играл(а)",mt_1:"Основной стол для тех, кто знает правила.",mtb_free:"свободно мест: {n}",mtb_wait:"мест нет — лист ожидания",
+ md_note:"Ждём вас. Если планы изменятся, отмените запись на сайте.",md_close:"Готово",
+ cal_t:"Добавить в календарь",cal_g:"Google Календарь",cal_apple:"Календарь iPhone",cal_ok:"Файл календаря сохранён — откройте его, чтобы добавить событие.",cal_title:"Мафия · Mafia Visit Club",cal_desc:"Игра в спортивную мафию. Сбор за 15 минут до начала. Если не сможете прийти — отмените запись на сайте.",
+ tab_crm:"Записи",tab_msg:"Сообщения в WhatsApp",tab_photo:"Фото",
+ ph_hero:"Главное фото (на всю ширину)",ph_gal:"Галерея «Атмосфера»",
+ ph_how:"Лучше всего работают горизонтальные фото от 1600 px: стол, карты, маски, руки игроков, свет кофейни. Фото до 20 МБ.",
+ ph_up:"Загружаем…",ph_ok:"Готово",ph_err:"Не удалось загрузить. Проверьте размер файла.",ph_del:"Удалить",
+ gal_kicker:"Атмосфера",gal_title:"Вечера в клубе",
+ quote:"Здесь врут красиво, играют честно и всегда допивают кофе.",
+ msg_type:"Тип сообщения",mt_announce:"Анонс игры",mt_lineup:"Список рассадки",mt_remind:"Напоминание в день игры",mt_free:"Свой текст",
+ msg_lang:"Язык",msg_text:"Текст сообщения (можно править)",
+ msg_how:"Нажмите «Открыть в WhatsApp»: откроется WhatsApp на вашем телефоне с готовым текстом. Выберите группу клуба и отправьте — сообщение уйдёт с вашего номера.",
+ msg_send:"Открыть в WhatsApp",msg_copy:"Копировать текст",msg_reset:"Сбросить шаблон",
+ phone_label:"Телефон (WhatsApp)",
+ consent:"Согласен(на) на обработку номера для связи по играм. Номер видит только администратор клуба (KVKK).",
+ need_phone:"Укажите телефон с кодом страны, например +90 5xx…",
+ need_consent:"Отметьте согласие на обработку номера.",
+ wa_text:"Вы записаны. Вступите в группу клуба в WhatsApp: там напоминания, рассадка и новости.",
+ wa_btn:"Вступить в группу WhatsApp",
+ adm_kicker:"Только для администратора",adm_title:"CRM: записи и игроки",
+ adm_lead:"Телефоны видны только здесь. Игроки и гости сайта их не видят.",
+ k_players:"игроков в базе",k_game:"записано на игру",k_wait:"в ожидании",
+ adm_game:"Игра",copy_phones:"Копировать телефоны",copy_list:"Копировать список для группы",
+ th_name:"Имя",th_phone:"Телефон",th_status:"Статус",th_games:"Записей",th_when:"Записан",th_next:"Ближайшая",
+ st_table:"стол {t}",st_wait:"стол {t} · ожидание",adm_all:"База игроков",
+ copied:"Скопировано",copy_fail:"Не удалось скопировать — выделите текст вручную.",
+ wa_chat:"Написать",no_phone:"нет номера",rm:"Убрать"
+},
+tr:{
+ nav_home:"Ana sayfa",nav_schedule:"Kayıt",nav_rules:"Kurallar",nav_news:"Haberler",nav_blog:"Blog",nav_contacts:"İletişim",hdr_cta:"Kaydol",yr_kicker:"Yıllık takvim",yr_title:"Yılın tüm oyunları",yr_lead:"Oyunlar her salı, perşembe ve cumartesi 19:00\'da. Kayıt oyundan bir ay önce açılır — kaydolmak için kırmızı tarihe bas.",yr_l_open:"kayıt açık",yr_l_mine:"kayıtlısın",yr_l_soon:"kayıt daha sonra açılacak",yr_locked:"{d} için kayıt {o} tarihinde açılacak",yr_games:"{n} oyun",credit:"Web sitesi tasarımı —",cancel_cta:"Kaydı iptal et",mc_kicker:"Kayıtlarım",mc_title:"Kaydı iptal et",mc_empty:"Yaklaşan oyunlara henüz kaydın yok.",mc_cancel:"İptal et",mc_sure:"Emin misin?",mc_yes:"Evet, iptal et",mc_no:"Hayır",mc_done:"Kayıt iptal edildi. Yer sıradaki oyuncuya açıldı.",mc_notify:"Organizatöre bildir",mc_msg:"❌ İptal: Mafya {d}, masa {t} — {name}",mc_close:"Kapat",mc_signin:"Kaydı iptal etmek için giriş yapman gerekiyor. Ya da organizatöre WhatsApp'tan yaz.",notify_btn:"Organizatöre bildir",notify_msg:"✅ Mafya {d}, masa {t}, {seat} — {name}",notify_hint:"«Organizatöre bildir»e bas — WhatsApp hazır mesajla açılır, sadece «Gönder»e basman yeterli.",seat_n:"yer {n}",seat_w:"bekleme {n}",
+ hero_kicker:"Spor mafya kulübü",hero_loc:"Visit Club · Mahmutlar",
+ hero_title:"Şehir uyuyor. <em>Mafya uyanıyor.</em>",
+ hero_lead:"Haftada üç akşam Mahmutlar'daki Visit Club Coffee & Patisserie'de aynı masada buluşuyoruz: 10 oyuncu, bir yönetici, kahve ve tek bir dürüst yüz yok. Yeni başlayanlara kuralları oyun sırasında öğretiyoruz.",
+ fact_time:"başlangıç",fact_days:"oyun günleri",fact_seats:"masada yer",
+ cta_join:"Oyuna kaydol",cta_rules:"Nasıl oynanır",
+ eve_kicker:"Akşam nasıl geçer",eve_title:"Bir akşam, üç oyun",
+ eve_1:"Geliyoruz, kahvemizi alıyoruz, tanışıyoruz. Yönetici yeni gelenlere kuralları kısaca anlatır.",
+ eve_2:"Numaralı yerlere oturuyoruz, roller dağıtılıyor. İlk oyun başlıyor.",
+ eve_3:"Bir oyun yaklaşık 45 dakika sürer. Oyunlar arasında kısa mola ve değerlendirme.",
+ eve_4:"Akşamın sonuçları, en iyi oyuncu, hatıra fotoğrafı.",
+ next:"Sıradaki oyun",
+ sch_kicker:"Oyun takvimi",sch_title:"Masadaki yerini ayır",
+ sch_lead:"Bir akşam seç ve «Kaydol»a bas. Masada 10 yer var, sonrası bekleme listesi: biri iptal ederse onun yerine geçersin.",
+ nick_label:"Adın veya oyun takma adın",
+ db_loading:"Oyuncu listesi yükleniyor…",
+ db_ok:"Liste herkes için anlık güncellenir. Kaydını istediğin zaman iptal edebilirsin.",
+ db_off:"Çevrimiçi kayıt burada kullanılamıyor. Organizatöre WhatsApp'tan yaz: +90 501 289 07 55 — seni listeye ekler.",
+ db_slow:"Liste henüz yüklenmedi. Sayfayı biraz sonra yenile.",
+ join:"Kaydol",leave:"Kaydı iptal et",full_wait:"Bekleme listesine gir",
+ need_nick:"Önce yukarıya adını veya takma adını yaz.",
+ joined:"Kaydın alındı. Görüşmek üzere!",left:"Kayıt iptal edildi.",err:"Kaydedilemedi. Tekrar dene.",
+ st_free:"{t} yerden <b>{n}</b> boş",st_full:"Masa doldu · bekleyen: <b>{n}</b>",st_empty:"Henüz kimse yok — ilk sen ol",
+ you_in:"{t} numaralı masadasın · yer {n}",you_wait:"{t} numaralı masa · bekleme listesindesin: {n}",tbl1:"1 numaralı masa · ana",tbl2:"2 numaralı masa · yeni başlayanlar",
+ today:"Bugün",tomorrow:"Yarın",
+ rules_kicker:"Kurallar",rules_title:"5 dakikada spor mafya",
+ rules_lead:"Klasik spor mafya kurallarıyla oynuyoruz: 10 oyuncu, bir yönetici, sabit roller ve konuşma süreleri. Şehir (kırmızılar) mafyaya (siyahlar) karşı.",
+ r_civ:"Vatandaş",r_civ_n:"6 kart · kırmızı",r_civ_d:"Kendi rolünden başka bir şey bilmez. Mantık, gözlem ve oylamayla kazanır.",
+ r_sh:"Şerif",r_sh_n:"1 kart · kırmızı",r_sh_d:"Her gece mafya Boss'unu arar: bir oyuncuyu kontrol eder, yönetici rolünü işaretle gösterir.",
+ r_maf:"Mafya",r_maf_n:"2 kart · siyah",r_maf_d:"İlk gece birbirlerini tanırlar. Geceleri Boss ile birlikte kimin öleceğini seçerler.",
+ r_don:"Mafya Boss'u",r_don_n:"1 kart · siyah",r_don_d:"Mafyanın lideri. Sıfırıncı gecede yüzüğünü göstererek kendini tanıtır ve ilk 3 gece kimin öleceğine karar verir. Geceleri kontrolleriyle şerifi arar.",
+ rules_flow:"Oyunun akışı",
+ s1_t:"Rollerin dağıtımı",s1:"Oyuncular 1–10 numaralı yerlere oturur ve kartlarını gizlice alır. Yöneticinin komutuyla herkes maske takar ya da gözlerini kapatır.",
+ s2_t:"Sıfırıncı gece",s2:"Mafya sessizce tanışır. Boss kendini gösterir — elindeki yüzüğü işaret eder. İlk 3 gece kimin öldürüleceğine Boss karar verir ve 3 numarayı sırayla işaretlerle ekibine gösterir. Ardından şerif, yönetici onu tanısın diye uyanır. Bu gece kimse ölmez.",
+ s3_t:"Gündüz: konuşmalar",s3:"Herkes sırayla 1 dakika konuşur. Konuşma sırasında bir oyuncuyu oylamaya aday gösterebilirsin.",
+ s4_t:"Oylama",s4:"Adaylar oy alır. Oylamayla çıkan oyuncu son sözünü söyler (1 dakika) ve masadan ayrılır.",
+ s5_t:"Gece",s5:"Tüm oyuncuların gözleri kapalı. İlk 3 gece mafya, Boss'un sıfırıncı gecede seçtiği kurbanlara ateş eder. Ateş etmek, kurbanın numarasını gösteren bükülmüş parmaklardır ve tüm mafya oyuncuları aynı anda ateş etmelidir. Siyahların hepsi aynı anda aynı numaraya ateş ederse vatandaş ölür; biri geç kalır ya da başka numara gösterirse ıska geçer ve ateş edilen oyuncu hayatta kalır. Ardından mafya Boss'u şerifi, şerif de mafya Boss'unu arar: her biri bir oyuncuyu kontrol eder ve yönetici o oyuncunun rolünü işaretle gösterir (işaretler aşağıda).",
+ s6_t:"Zafer",s6:"Masada siyah kalmayınca kırmızılar kazanır. Siyahların sayısı kırmızılarınkine eşit olunca siyahlar kazanır.",
+ nb_kicker:"Yeni başlayanlar",nb_title:"İlk oyun — 2 numaralı masada",nb_text:"Yeni başlayanlar ilk kez 2 numaralı masaya oturur — bu masa tanışma ve öğrenme içindir. Yönetici kuralları oyun sırasında anlatır ve ipucu verir; alıştığında ana masaya hoş geldin.",
+ mr_6:"İlk kez oynuyorsan seni tanışma ve öğrenme için 2 numaralı masa bekliyor.",
+ g_title:"Yöneticinin işaretleri",
+ g_lead:"Gece yönetici, mafya Boss'u ve şerifin kontrollerine sözsüz, sadece işaretlerle cevap verir:",
+ g1_t:"Vatandaş",g1:"iki baş parmak yukarı",
+ g2_t:"Mafya",g2:"iki baş parmak aşağı",
+ g3_t:"Şerif",g3:"ellerle «tamam» işareti",
+ g4_t:"Mafya Boss'u",g4:"diğer eliyle parmağına yüzük takıyormuş gibi yapar",
+ rules_etiq:"Fauller ve görgü",
+ etiq:"Her oyuncuya tam bir dakika verilir. Sadece kendi dakikanda konuşulur. Söz alan oyuncunun sözünü kesene masaya ortak çay için 200 lira ceza ☕. Yemin etmek ve gizlice bakmak yok. İhlallere faul verilir: üçüncüde oyuncu bir sonraki konuşmasını kaçırır, dördüncüde masadan çıkar. Telefonlar ekranı aşağı bakacak şekilde masada.",
+ news_kicker:"Neler oluyor",news_title:"Kulüp haberleri",
+ blog_kicker:"Oku",blog_title:"Blog: daha iyi oynamak için",
+ more:"Devamını oku",sample:"örnek",
+ ct_kicker:"Bize ulaşın",ct_title:"İletişim",ct_place:"Nerede",ct_place_v:"Visit Club Coffee & Patisserie, Mahmutlar Mah. Barbaros Cad., Çakır Rezidans B Blok 187 B/F, Alanya",ct_map:"Haritada aç",ct_group:"Oyun kaydı için WhatsApp grubu",ct_group_d:"Grupta oyun duyuruları, oturma düzeni, hatırlatmalar ve kulüp haberleri var.",ct_group_btn:"Gruba katıl",ct_phone:"Telefon ve WhatsApp",ct_copy:"Numarayı kopyala",ct_ig:"Instagram'ı aç",ct_when_note:"Buluşma 18:45'ten itibaren",ct_when:"Ne zaman",
+ ct_note:"Kurumsal oyunlar, doğum günleri ve İngilizce oyunlar için anlaşmalı organizasyon yapıyoruz. WhatsApp'tan yazın.",
+ footer:"Mafia Visit Club · Visit Club Coffee & Patisserie, Mahmutlar, Alanya · Rusça ve Türkçe oyunlar · 18+ önerilir, gençler yetişkinlerle",
+ days_sep:" · ",
+ adm_denied_t:"Sadece yönetici girebilir",adm_denied:"Kayıtları, telefonları ve mesajları açmak için yönetici şifresini gir.",back_site:"← Siteye dön",
+ mr_kicker:"Kayıttan önce",mr_title:"Masa kuralları",
+ mr_1:"Her oyuncuya tam bir dakika. Söz alanın sözünü kesene ortak çay için 200 lira ☕.",
+ mr_2:"Gece herkesin gözleri kapalı. Gizlice bakmak yasak.",
+ mr_3:"Yemin etmek yok. Telefonlar ekranı aşağı bakacak şekilde masada.",
+ mr_4:"18:45'te gel — tam 19:00'da başlıyoruz.",
+ mr_5:"Gelemeyeceksen kaydını sitede iptal et, yerin sıradakine geçsin.",
+ mr_full:"Tüm kuralları oku →",mr_ok:"Kuralları okudum ve anladım",mr_cancel:"Vazgeç",
+ md_title:"Kaydın alındı!",md_seat:"{t} numaralı masa · {n} numaralı yer",md_wait:"{t} numaralı masa doldu — bekleme listesindesin: {n}",
+ mt_q:"Hangi masa?",mt_2t:"2 numaralı masa — ilk kez oynuyorum",mt_2:"Tanışma ve öğrenme: yönetici oyun sırasında yardım eder.",mt_1t:"1 numaralı masa — daha önce oynadım",mt_1:"Kuralları bilenler için ana masa.",mtb_free:"boş yer: {n}",mtb_wait:"yer yok — bekleme listesi",
+ md_note:"Seni bekliyoruz. Planın değişirse kaydını sitede iptal et.",md_close:"Tamam",
+ cal_t:"Takvime ekle",cal_g:"Google Takvim",cal_apple:"iPhone Takvimi",cal_ok:"Takvim dosyası kaydedildi — etkinliği eklemek için aç.",cal_title:"Mafya · Mafia Visit Club",cal_desc:"Spor mafya oyunu. Buluşma başlangıçtan 15 dakika önce. Gelemeyeceksen kaydını sitede iptal et.",
+ tab_crm:"Kayıtlar",tab_msg:"WhatsApp mesajları",tab_photo:"Fotoğraflar",
+ ph_hero:"Ana fotoğraf (tam genişlik)",ph_gal:"«Atmosfer» galerisi",
+ ph_how:"En iyi sonuç 1600 px üzeri yatay fotoğraflarla: masa, kartlar, maskeler, oyuncuların elleri, kafenin ışığı. En fazla 20 MB.",
+ ph_up:"Yükleniyor…",ph_ok:"Tamam",ph_err:"Yüklenemedi. Dosya boyutunu kontrol et.",ph_del:"Sil",
+ gal_kicker:"Atmosfer",gal_title:"Kulüpte akşamlar",
+ quote:"Burada güzel yalan söylenir, dürüst oynanır ve kahve her zaman bitirilir.",
+ msg_type:"Mesaj türü",mt_announce:"Oyun duyurusu",mt_lineup:"Oturma listesi",mt_remind:"Oyun günü hatırlatması",mt_free:"Kendi metnin",
+ msg_lang:"Dil",msg_text:"Mesaj metni (düzenlenebilir)",
+ msg_how:"«WhatsApp'ta aç»a bas: telefonunda WhatsApp hazır metinle açılır. Kulüp grubunu seç ve gönder — mesaj senin numarandan gider.",
+ msg_send:"WhatsApp'ta aç",msg_copy:"Metni kopyala",msg_reset:"Şablonu sıfırla",
+ phone_label:"Telefon (WhatsApp)",
+ consent:"Oyunlarla ilgili iletişim için numaramın işlenmesine onay veriyorum. Numarayı sadece kulüp yöneticisi görür (KVKK).",
+ need_phone:"Telefonu ülke koduyla yaz, örneğin +90 5xx…",
+ need_consent:"Numaranın işlenmesine onay kutusunu işaretle.",
+ wa_text:"Kaydın alındı. Kulübün WhatsApp grubuna katıl: hatırlatmalar, oturma düzeni ve haberler orada.",
+ wa_btn:"WhatsApp grubuna katıl",
+ adm_kicker:"Sadece yönetici için",adm_title:"CRM: kayıtlar ve oyuncular",
+ adm_lead:"Telefonlar sadece burada görünür. Oyuncular ve site ziyaretçileri göremez.",
+ k_players:"kayıtlı oyuncu",k_game:"oyuna kayıtlı",k_wait:"bekleme listesinde",
+ adm_game:"Oyun",copy_phones:"Telefonları kopyala",copy_list:"Grup için listeyi kopyala",
+ th_name:"Ad",th_phone:"Telefon",th_status:"Durum",th_games:"Kayıt",th_when:"Kayıt zamanı",th_next:"Sıradaki",
+ st_table:"masa {t}",st_wait:"masa {t} · bekliyor",adm_all:"Oyuncu veritabanı",
+ copied:"Kopyalandı",copy_fail:"Kopyalanamadı — metni elle seç.",
+ wa_chat:"Yaz",no_phone:"numara yok",rm:"Çıkar"
+}};
+
+const NEWS = [
+ {d:"2026-11-04",tag:{ru:"Турнир",tr:"Turnuva"},sample:true,
+  t:{ru:"Декабрьский турнир: 20 игроков, 2 стола",tr:"Aralık turnuvası: 20 oyuncu, 2 masa"},
+  p:{ru:"Первый турнир клуба пройдёт в субботу, 13 декабря. Две таблицы, 8 игр, финал за лучшим столом. Участвуют игроки, сыгравшие у нас хотя бы 5 вечеров.",
+     tr:"Kulübün ilk turnuvası 13 Aralık Cumartesi günü. İki masa, 8 oyun, en iyi masada final. En az 5 akşam oynamış oyuncular katılabilir."}},
+ {d:"2026-10-28",tag:{ru:"Новичкам",tr:"Yeni başlayanlar"},sample:true,
+  t:{ru:"Каждый вторник — вечер для новичков",tr:"Her salı yeni başlayanlar akşamı"},
+  p:{ru:"По вторникам первая партия идёт с подсказками ведущего, а после игры разбираем ключевые моменты. Если вы никогда не играли — начинайте со вторника.",
+     tr:"Salı günleri ilk oyun yöneticinin ipuçlarıyla oynanır, oyundan sonra önemli anları konuşuruz. Hiç oynamadıysan salıdan başla."}},
+ {d:"2026-10-15",tag:{ru:"Клуб",tr:"Kulüp"},sample:true,
+  t:{ru:"Открыли сезон и запустили онлайн-запись",tr:"Sezonu açtık, çevrimiçi kaydı başlattık"},
+  p:{ru:"Теперь записаться на игру можно прямо на сайте. Видно, кто уже за столом и сколько мест осталось.",
+     tr:"Artık oyuna doğrudan siteden kaydolabilirsin. Masada kimlerin olduğu ve kaç yer kaldığı görünüyor."}}
+];
+
+const BLOG = [
+ {img:()=>BLOG_IMG[0],d:"2026-11-01",tag:{ru:"Новичкам",tr:"Yeni başlayanlar"},
+  t:{ru:"Первая игра: что нужно знать заранее",tr:"İlk oyun: önceden bilmen gerekenler"},
+  p:{ru:"Короткая памятка, чтобы чувствовать себя уверенно с первой партии.",tr:"İlk oyundan itibaren rahat hissetmen için kısa bir rehber."},
+  b:{ru:["Приходите к 18:45: ведущий объяснит правила и ответит на вопросы до рассадки.","Запомните свой номер. В спортивной мафии к игрокам обращаются по номерам, а не по именам.","В первой игре можно просто наблюдать: кто говорит слишком уверенно, кто меняет мнение после ночи.","Не бойтесь ошибиться. Проиграть мирным жителем — нормальная часть обучения."],
+     tr:["18:45'te gel: yönetici oturmadan önce kuralları anlatır ve sorularını yanıtlar.","Numaranı unutma. Spor mafyada oyunculara isimle değil numarayla hitap edilir.","İlk oyunda sadece gözlem yapabilirsin: kim fazla emin konuşuyor, kim geceden sonra fikir değiştiriyor.","Hata yapmaktan korkma. Vatandaş olarak kaybetmek öğrenmenin normal bir parçası."]}},
+ {img:()=>BLOG_IMG[1],d:"2026-10-24",tag:{ru:"Тактика",tr:"Taktik"},
+  t:{ru:"Как использовать свою минуту",tr:"Bir dakikanı nasıl kullanmalısın"},
+  p:{ru:"Минута пролетает быстро. Вот простая структура речи.",tr:"Bir dakika çabuk geçer. İşte basit bir konuşma yapısı."},
+  b:{ru:["Первые 10 секунд: кто вы и что заметили за прошлый круг.","Следующие 30 секунд: одна-две конкретные версии с номерами игроков.","Последние 20 секунд: кого выставляете и почему. Выставление без объяснения почти всегда работает против вас."],
+     tr:["İlk 10 saniye: kim olduğun ve önceki turda ne fark ettiğin.","Sonraki 30 saniye: oyuncu numaralarıyla bir iki somut tahmin.","Son 20 saniye: kimi aday gösterdiğin ve neden. Açıklamasız aday göstermek neredeyse her zaman aleyhine işler."]}},
+ {img:()=>BLOG_IMG[2],d:"2026-10-12",tag:{ru:"Шериф",tr:"Şerif"},
+  t:{ru:"Шериф: когда раскрываться",tr:"Şerif: ne zaman açılmalı"},
+  p:{ru:"Главная дилемма красной команды.",tr:"Kırmızı takımın en büyük ikilemi."},
+  b:{ru:["Раскрываться в первый день стоит, только если вы нашли чёрного: город получает точную цель.","Если проверки красные, лучше дожить до следующей ночи и собрать больше информации.","Готовьтесь к тому, что босс тоже может назваться шерифом. Ваши проверки должны быть логичнее его."],
+     tr:["İlk gün açılmak, ancak bir siyah bulduysan mantıklıdır: şehir kesin bir hedef kazanır.","Kontrollerin kırmızı çıktıysa, bir sonraki geceye kadar hayatta kalıp daha fazla bilgi toplamak daha iyidir.","Boss'un da şerif olduğunu iddia edebileceğine hazırlıklı ol. Kontrollerin onunkinden daha mantıklı olmalı."]}}
+];
+
+/* ---------- i18n ---------- */
+let lang = "ru";
+try{ const s = localStorage.getItem("mk_lang"); if(s==="ru"||s==="tr") lang=s; }catch(e){}
+const t = k => (T[lang][k] ?? k);
+const loc = () => lang==="ru" ? "ru-RU" : "tr-TR";
+
+function applyI18n(){
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i]").forEach(el=>{ el.textContent = t(el.dataset.i); });
+  document.querySelectorAll("[data-ih]").forEach(el=>{ el.innerHTML = t(el.dataset.ih); });
+  const h1=document.querySelector(".hero-inner h1"); let wi=0;
+  h1.querySelectorAll("em").forEach(()=>{});
+  [...h1.childNodes].forEach(node=>{
+    const wrapWords=(txt,parent)=>{ txt.split(/(\s+)/).forEach(part=>{ if(!part) return; if(/^\s+$/.test(part)){ parent.append(part); return; }
+      const sp=document.createElement("span"); sp.className="w"; sp.style.setProperty("--i",wi++); sp.textContent=part; parent.append(sp); }); };
+    if(node.nodeType===3){ const frag=document.createDocumentFragment(); wrapWords(node.textContent,frag); node.replaceWith(frag); }
+    else if(node.nodeType===1){ const txt=node.textContent; node.textContent=""; wrapWords(txt,node); }
+  });
+  const tk=document.getElementById("ticker"); tk.textContent="";
+  const phrases=["Город засыпает","Просыпается мафия","Şehir uyuyor","Mafya uyanıyor","19:00","Ночь. Город. Ложь.","Gece. Şehir. Yalan."];
+  for(let r=0;r<2;r++) phrases.forEach(x=>{ const sp=document.createElement("span"); sp.textContent=x; tk.append(sp); });
+  document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.lang===lang));
+  const dayNames = CONFIG.gameDays.map(d=>new Intl.DateTimeFormat(loc(),{weekday:"short"}).format(new Date(2024,0,7+d)));
+  document.getElementById("fact-days").textContent = dayNames.join(" ");
+  const full = CONFIG.gameDays.map(d=>new Intl.DateTimeFormat(loc(),{weekday:"long"}).format(new Date(2024,0,7+d)));
+  document.getElementById("ct-when").textContent = full.join(", ")+" · "+CONFIG.time;
+  setNote(noteKey);
+  if(window.__booted) renderPhotos();
+  renderPosts("news-list", NEWS);
+  renderPosts("blog-list", BLOG);
+  renderGames();
+}
+document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>{
+  lang=b.dataset.lang; try{localStorage.setItem("mk_lang",lang)}catch(e){}; applyI18n();
+}));
+
+/* ---------- routing ---------- */
+const VIEWS=["home","schedule","rules","news","blog","contacts","admin"];
+function route(){
+  const h=(location.hash||"#home").slice(1); let v=VIEWS.includes(h)?h:"home";
+  document.body.classList.toggle("admin-mode", v==="admin");
+  document.getElementById("adm-panel").hidden = !isAdmin;
+  document.getElementById("adm-denied").hidden = isAdmin || !authChecked;
+  VIEWS.forEach(x=>document.getElementById("v-"+x).hidden = x!==v);
+  document.querySelectorAll("nav.menu a").forEach(a=>{ if(a.getAttribute("href")==="#"+v) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
+  window.scrollTo(0,0);
+}
+addEventListener("hashchange",()=>{ if(document.startViewTransition && !matchMedia("(prefers-reduced-motion: reduce)").matches){ document.startViewTransition(route); } else route(); });
+
+/* ---------- posts ---------- */
+function renderPosts(id,list){
+  const box=document.getElementById(id); box.textContent="";
+  list.forEach(p=>{
+    const el=document.createElement("article"); el.className="post";
+    const tm=document.createElement("time"); tm.dateTime=p.d;
+    tm.textContent=new Intl.DateTimeFormat(loc(),{day:"numeric",month:"long",year:"numeric"}).format(new Date(p.d+"T12:00"));
+    const body=document.createElement("div");
+    if(p.img){ const im=document.createElement("img"); im.className="post-img"; im.src=p.img(); im.alt=""; im.loading="lazy"; body.append(im); }
+    const tag=document.createElement("span"); tag.className="tag"; tag.textContent=p.tag[lang]+(p.sample?" · "+t("sample"):"");
+    const h=document.createElement("h3"); h.textContent=p.t[lang];
+    const s=document.createElement("p"); s.textContent=p.p[lang];
+    body.append(tag,h,s);
+    if(p.b){ const d=document.createElement("details"); const sm=document.createElement("summary"); sm.textContent=t("more");
+      const c=document.createElement("div"); p.b[lang].forEach(x=>{const q=document.createElement("p"); q.textContent=x; c.append(q)}); d.append(sm,c); body.append(d); }
+    el.append(tm,body); box.append(el);
+  });
+}
+
+/* ---------- games ---------- */
+const pad=n=>String(n).padStart(2,"0");
+const keyOf=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+function upcoming(){
+  const out=[]; const now=new Date(); const [hh,mm]=CONFIG.time.split(":").map(Number);
+  for(let i=0;i<=CONFIG.bookDays;i++){
+    const d=new Date(now.getFullYear(),now.getMonth(),now.getDate()+i, hh, mm);
+    if(!CONFIG.gameDays.includes(d.getDay())) continue;
+    if(d.getTime()+3*3600e3 < now.getTime()) continue; // hide games that already finished
+    out.push(d);
+  }
+  return out;
+}
+
+let docs=[];           // [{uid,name,dates:[], ts:{date:ms}}]
+let authChecked=false, myId=null, isOwner=false, isAdmin=false, phones={}, db=null, dbReady=false, noteKey="db_loading";
+let nick=""; try{ nick=localStorage.getItem("mk_nick")||"" }catch(e){}
+const nickInput=document.getElementById("nick"); nickInput.value=nick;
+nickInput.addEventListener("input",()=>{ nick=nickInput.value.trim(); try{localStorage.setItem("mk_nick",nick)}catch(e){} });
+document.getElementById("join-form").addEventListener("submit",e=>e.preventDefault());
+const phoneInput=document.getElementById("phone"), consentBox=document.getElementById("consent");
+let phone=""; try{ phone=localStorage.getItem("mk_phone")||"" }catch(e){}
+phoneInput.value=phone;
+phoneInput.addEventListener("input",()=>{ phone=phoneInput.value.trim(); try{localStorage.setItem("mk_phone",phone)}catch(e){} });
+document.getElementById("wa-link").href=CONFIG.whatsappGroup; document.getElementById("ct-group-link").href=CONFIG.whatsappGroup;
+const normPhone=p=>{ const d=(p||"").replace(/[^\d+]/g,""); const digits=d.replace(/\D/g,""); if(digits.length<10||digits.length>15) return null; return "+"+digits; };
+let myPhoneSaved=null;
+
+function setNote(k){ noteKey=k; const n=document.getElementById("db-note"); n.textContent=t(k); n.className="note"+(k==="db_off"||k==="db_slow"?" warn":""); }
+
+function tableOf(p,key){ return ((p.tables||{})[key])===2?2:1; }
+function playersFor(key,table){
+  return docs.filter(x=>Array.isArray(x.dates)&&x.dates.includes(key)&&(!table||tableOf(x,key)===table))
+    .sort((a,b)=>((a.ts||{})[key]||0)-((b.ts||{})[key]||0));
+}
+function myPlace(key){ for(const tb of [1,2]){ const l=playersFor(key,tb); const i=l.findIndex(p=>p.uid===myId); if(i>=0) return {table:tb,idx:i}; } return null; }
+
+function dateLabel(d){
+  const today=new Date(); const tm=new Date(today.getFullYear(),today.getMonth(),today.getDate()+1);
+  if(keyOf(d)===keyOf(today)) return t("today");
+  if(keyOf(d)===keyOf(tm)) return t("tomorrow");
+  return new Intl.DateTimeFormat(loc(),{weekday:"long"}).format(d);
+}
+
+function utcStamp(key){ const [y,m,dd]=key.split("-").map(Number); const [hh,mm]=CONFIG.time.split(":").map(Number);
+  const start=new Date(Date.UTC(y,m-1,dd,hh-CONFIG.utcOffset,mm)); const end=new Date(start.getTime()+CONFIG.durationHours*3600e3);
+  const f=x=>x.toISOString().replace(/[-:]/g,"").replace(/\.\d{3}/,""); return [f(start),f(end)]; }
+function calPlace(){ return t("ct_place_v"); }
+function googleCal(key){ const [a,b]=utcStamp(key);
+  return "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(t("cal_title"))+"&dates="+a+"/"+b+"&details="+encodeURIComponent(t("cal_desc")+"\n"+CONFIG.siteUrl)+"&location="+encodeURIComponent(calPlace()); }
+function outlookCal(key){ const [y,m,dd]=key.split("-"); const [hh,mm]=CONFIG.time.split(":").map(Number);
+  const off=(CONFIG.utcOffset>=0?"+":"-")+String(Math.abs(CONFIG.utcOffset)).padStart(2,"0")+":00";
+  const st=`${y}-${m}-${dd}T${pad(hh)}:${pad(mm)}:00${off}`; const enH=hh+CONFIG.durationHours; const en=`${y}-${m}-${dd}T${pad(enH)}:${pad(mm)}:00${off}`;
+  return "https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose&rru=addevent&subject="+encodeURIComponent(t("cal_title"))+"&startdt="+encodeURIComponent(st)+"&enddt="+encodeURIComponent(en)+"&body="+encodeURIComponent(t("cal_desc")+"\n"+CONFIG.siteUrl)+"&location="+encodeURIComponent(calPlace()); }
+function calRow(key){ const row=document.createElement("div"); row.className="cal";
+  const l=document.createElement("span"); l.className="label"; l.textContent=t("cal_t");
+  const g=document.createElement("a"); g.className="btn small"; g.href=googleCal(key); g.target="_blank"; g.rel="noopener"; g.textContent=t("cal_g");
+  row.append(l);
+  row.append(g); return row; }
+function tableBlock(key,tb,compact,me){
+  const list=playersFor(key,tb); const main=list.slice(0,CONFIG.seats), wait=list.slice(CONFIG.seats);
+  const box=document.createElement("div"); box.className="tbl-block";
+  const h=document.createElement("div"); h.className="tbl-head";
+  const nm=document.createElement("span"); nm.className="tbl-name"; nm.textContent=t(tb===1?"tbl1":"tbl2");
+  const cnt=document.createElement("span"); cnt.className="tbl-count"; cnt.textContent=dbReady? (main.length+"/"+CONFIG.seats+(wait.length?" +"+wait.length:"")) : "";
+  h.append(nm,cnt);
+  const seats=document.createElement("div"); seats.className="seats"; seats.setAttribute("aria-hidden","true");
+  const myI= me&&me.table===tb ? me.idx : -1;
+  for(let i=0;i<CONFIG.seats;i++){ const s=document.createElement("div"); s.className="seat"+(i<main.length?" taken":"")+(i===myI?" me":""); s.textContent=i+1; seats.append(s); }
+  box.append(h,seats);
+  if(!compact && list.length){
+    const ul=document.createElement("ul"); ul.className="players";
+    list.forEach((p,i)=>{ const li=document.createElement("li"); if(i>=CONFIG.seats) li.className="wait";
+      const n=document.createElement("span"); n.className="n"; n.textContent=i<CONFIG.seats?("#"+(i+1)):"…";
+      const nm2=document.createElement("span"); nm2.textContent=p.name||"—"; li.append(n,nm2); ul.append(li); });
+    box.append(ul);
+  }
+  return box;
+}
+function gameCard(d, compact){
+  const key=keyOf(d); const me=myPlace(key);
+  const all=playersFor(key);
+  const card=document.createElement("div"); card.className="game"; if(!compact) card.id="g-"+key;
+  const head=document.createElement("div"); head.className="game-head";
+  const left=document.createElement("div");
+  const lbl=document.createElement("div"); lbl.className="label"; lbl.textContent=compact?t("next"):dateLabel(d);
+  const dt=document.createElement("div"); dt.className="game-date";
+  dt.textContent=new Intl.DateTimeFormat(loc(),{day:"numeric",month:"long"}).format(d)+(compact?", "+dateLabel(d).toLowerCase():"");
+  left.append(lbl,dt);
+  const tm=document.createElement("div"); tm.className="game-time"; tm.textContent=CONFIG.time;
+  head.append(left,tm);
+  card.append(head, tableBlock(key,1,compact,me), tableBlock(key,2,compact,me));
+  const st=document.createElement("p"); st.className="status";
+  if(dbReady && !all.length) st.innerHTML=t("st_empty");
+  if(me){ const y=document.createElement("b"); y.style.display="block"; y.style.color="var(--red)";
+    y.textContent = me.idx<CONFIG.seats ? t("you_in").replace("{t}",me.table).replace("{n}",me.idx+1) : t("you_wait").replace("{t}",me.table).replace("{n}",me.idx-CONFIG.seats+1); st.append(y); }
+  if(st.childNodes.length) card.append(st);
+  const btn=document.createElement("button"); btn.type="button"; btn.className="btn small"+(me?"":" primary");
+  const full = [1,2].every(tb=>playersFor(key,tb).length >= CONFIG.seats+CONFIG.waitlist);
+  btn.textContent = me ? t("leave") : t("join");
+  btn.disabled = !db || !dbReady || (!me && full);
+  if(compact){ const a=document.createElement("a"); a.className="btn primary small"; a.href="#schedule"; a.textContent=t("cta_join"); card.append(a); }
+  else { btn.addEventListener("click",()=> me ? openCancel(key) : startJoin(key)); card.append(btn); if(me) card.append(calRow(key)); }
+  return card;
+}
+
+function renderYear(){
+  const box=document.getElementById("year"); if(!box) return; box.textContent="";
+  const now=new Date(); const today=keyOf(now);
+  const openKeys=new Set(upcoming().map(keyOf));
+  const lastOpen=new Date(now.getFullYear(),now.getMonth(),now.getDate()+CONFIG.bookDays);
+  const wdN=[...Array(7)].map((_,i)=>new Intl.DateTimeFormat(loc(),{weekday:"short"}).format(new Date(2024,0,1+i)).slice(0,2));
+  for(let m=0;m<CONFIG.yearMonths;m++){
+    const first=new Date(now.getFullYear(),now.getMonth()+m,1); const days=new Date(first.getFullYear(),first.getMonth()+1,0).getDate();
+    const mo=document.createElement("div"); mo.className="month";
+    const h=document.createElement("h3"); h.textContent=new Intl.DateTimeFormat(loc(),{month:"long"}).format(first)+" "+first.getFullYear();
+    let games=0; for(let d=1;d<=days;d++){ if(CONFIG.gameDays.includes(new Date(first.getFullYear(),first.getMonth(),d).getDay())) games++; }
+    const sm=document.createElement("small"); sm.textContent=t("yr_games").replace("{n}",games); h.append(sm);
+    const g=document.createElement("div"); g.className="mgrid";
+    wdN.forEach(w=>{ const e=document.createElement("span"); e.className="wd"; e.textContent=w; g.append(e); });
+    const lead=(first.getDay()+6)%7; for(let i=0;i<lead;i++) g.append(document.createElement("span"));
+    for(let d=1;d<=days;d++){
+      const dt=new Date(first.getFullYear(),first.getMonth(),d); const k=keyOf(dt);
+      const isGame=CONFIG.gameDays.includes(dt.getDay());
+      const el=document.createElement(isGame?"button":"span"); el.className="dc"; el.textContent=d;
+      if(k<today) el.classList.add("past"); if(k===today) el.classList.add("today");
+      if(isGame){ el.type="button"; el.classList.add("game");
+        const label=new Intl.DateTimeFormat(loc(),{weekday:"long",day:"numeric",month:"long"}).format(dt);
+        if(k<today){ el.disabled=true; }
+        else if(openKeys.has(k)){ const mine=myPlace(k); el.classList.add(mine?"mine":"open"); el.setAttribute("aria-label",label+" · "+t(mine?"yr_l_mine":"yr_l_open"));
+          el.addEventListener("click",()=>{ const c=document.getElementById("g-"+k); if(c){ c.scrollIntoView({behavior:"smooth",block:"center"}); c.classList.add("flash"); setTimeout(()=>c.classList.remove("flash"),1600); } }); }
+        else { el.classList.add("soon"); const od=new Date(dt.getFullYear(),dt.getMonth(),dt.getDate()-CONFIG.bookDays);
+          const msg=t("yr_locked").replace("{d}",new Intl.DateTimeFormat(loc(),{day:"numeric",month:"long"}).format(dt)).replace("{o}",new Intl.DateTimeFormat(loc(),{day:"numeric",month:"long"}).format(od));
+          el.setAttribute("aria-label",label+" · "+msg); el.title=msg; el.addEventListener("click",()=>toast(msg)); }
+      }
+      g.append(el);
+    }
+    mo.append(h,g); box.append(mo);
+  }
+}
+function renderGames(){
+  const games=upcoming();
+  const box=document.getElementById("games"); box.textContent="";
+  games.forEach(d=>box.append(gameCard(d,false)));
+  const ng=document.getElementById("next-game"); ng.textContent="";
+  if(games[0]) ng.append(gameCard(games[0],true));
+  const mine=docs.find(x=>x.uid===myId); const upKeys=new Set(games.map(keyOf));
+  document.getElementById("wa-box").hidden = !(mine && (mine.dates||[]).some(k=>upKeys.has(k)));
+  renderAdmin();
+  renderYear();
+}
+
+/* ---------- admin CRM ---------- */
+const admSel=document.getElementById("adm-game");
+admSel.addEventListener("change",renderAdmin);
+function fmtDT(ms){ return ms? new Intl.DateTimeFormat(loc(),{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}).format(new Date(ms)) : "—"; }
+function cell(tr,txt,cls){ const td=document.createElement("td"); if(cls) td.className=cls; if(txt instanceof Node) td.append(txt); else td.textContent=txt; tr.append(td); return td; }
+function waLink(ph){ const a=document.createElement("a"); a.href="https://wa.me/"+ph.replace(/\D/g,""); a.target="_blank"; a.rel="noopener"; a.textContent=t("wa_chat"); return a; }
+function phoneOf(uid){ return (phones[uid]||{}).phone||""; }
+function renderAdmin(){
+  if(!isAdmin) return;
+  const games=upcoming(); const cur=admSel.value;
+  admSel.textContent="";
+  games.forEach(d=>{ const o=document.createElement("option"); o.value=keyOf(d);
+    o.textContent=new Intl.DateTimeFormat(loc(),{weekday:"short",day:"numeric",month:"long"}).format(d)+" · "+playersFor(keyOf(d)).length; admSel.append(o); });
+  if(cur && games.some(d=>keyOf(d)===cur)) admSel.value=cur;
+  const key=admSel.value;
+  const t1=key?playersFor(key,1):[], t2=key?playersFor(key,2):[];
+  document.getElementById("k-players").textContent=docs.length;
+  document.getElementById("k-game").textContent=Math.min(t1.length,CONFIG.seats)+" + "+Math.min(t2.length,CONFIG.seats);
+  document.getElementById("k-wait").textContent=Math.max(0,t1.length-CONFIG.seats)+Math.max(0,t2.length-CONFIG.seats);
+  const rows=document.getElementById("adm-rows"); rows.textContent="";
+  [[1,t1],[2,t2]].forEach(([tb,list])=>list.forEach((p,i)=>{ const tr=document.createElement("tr");
+    cell(tr, i<CONFIG.seats? String(i+1) : "…", "num"); cell(tr,p.name||"—");
+    const ph=phoneOf(p.uid); cell(tr, ph||t("no_phone"), "num");
+    const pill=document.createElement("span"); pill.className="pill"+(i<CONFIG.seats?" in":""); pill.textContent=(i<CONFIG.seats?t("st_table"):t("st_wait")).replace("{t}",tb); cell(tr,pill);
+    cell(tr,String((p.dates||[]).length),"num"); cell(tr,fmtDT((p.ts||{})[key]));
+    const act=document.createElement("span"); act.style.display="flex"; act.style.gap="10px";
+    if(ph) act.append(waLink(ph));
+    const rm=document.createElement("button"); rm.type="button"; rm.className="btn small"; rm.textContent=t("rm"); rm.addEventListener("click",()=>removeOther(p,key)); act.append(rm);
+    cell(tr,act); rows.append(tr); }));
+  refreshMsg(false);
+  const base=document.getElementById("adm-base"); base.textContent="";
+  const upKeys=games.map(keyOf);
+  [...docs].sort((a,b)=>(a.name||"").localeCompare(b.name||"")).forEach(p=>{ const tr=document.createElement("tr");
+    cell(tr,p.name||"—"); const ph=phoneOf(p.uid); cell(tr,ph||t("no_phone"),"num"); cell(tr,String((p.dates||[]).length),"num");
+    const nx=upKeys.find(k=>(p.dates||[]).includes(k)); cell(tr, nx? new Intl.DateTimeFormat(loc(),{day:"numeric",month:"short"}).format(new Date(nx+"T12:00")) : "—");
+    cell(tr, ph? waLink(ph) : ""); base.append(tr); });
+}
+async function copyText(txt){
+  try{ await navigator.clipboard.writeText(txt); toast(t("copied")); }catch(e){ toast(t("copy_fail")); }
+}
+document.getElementById("copy-phones").addEventListener("click",()=>{
+  const list=playersFor(admSel.value); copyText(list.map(p=>phoneOf(p.uid)).filter(Boolean).join("\n"));
+});
+
+
+let toastTimer;
+function toast(msg){ const el=document.getElementById("toast"); el.textContent=msg; el.hidden=false; clearTimeout(toastTimer); toastTimer=setTimeout(()=>el.hidden=true,2600); }
+
+let busy=false;
+async function toggle(key, leaving, table){
+  if(busy||!db||!myId) return;
+  if(!leaving && !nick){ toast(t("need_nick")); nickInput.focus(); return; }
+  const np=normPhone(phone);
+  if(!leaving && !np){ toast(t("need_phone")); phoneInput.focus(); return; }
+  if(!leaving && !consentBox.checked && myPhoneSaved!==np){ toast(t("need_consent")); consentBox.focus(); return; }
+  busy=true;
+  if(!leaving && myPhoneSaved!==np){
+    try{ await db.collection("phones").doc(myId).set({phone:np,name:nick.slice(0,40),consent:true,consentAt:Date.now()}); myPhoneSaved=np; }
+    catch(e){ toast(t("err")); busy=false; return; }
+  }
+  const mine=docs.find(x=>x.uid===myId) || {uid:myId,name:nick,dates:[],ts:{},tables:{}};
+  const dates=new Set(mine.dates||[]); const ts={...(mine.ts||{})}; const tables={...(mine.tables||{})};
+  if(leaving){ dates.delete(key); delete ts[key]; delete tables[key]; } else { dates.add(key); ts[key]=Date.now(); tables[key]=table===2?2:1; }
+  const keep=[...dates].sort().slice(-80); const ts2={}, tb2={}; keep.forEach(k=>{ if(ts[k]) ts2[k]=ts[k]; if(tables[k]) tb2[k]=tables[k]; });
+  try{
+    await db.collection("signups").doc(myId).set({uid:myId,name:(nick||mine.name||"").slice(0,40),dates:keep,ts:ts2,tables:tb2,updatedAt:Date.now()});
+    if(leaving) toast(t("left"));
+    busy=false; return true;
+  }catch(e){ toast(t("err")); }
+  busy=false; return false;
+}
+/* ---------- signup dialogs ---------- */
+let pendingKey=null, lastFocus=null;
+const mRules=document.getElementById("m-rules"), mDone=document.getElementById("m-done"), mrOk=document.getElementById("mr-ok"), mrGo=document.getElementById("mr-go");
+function fmtGame(key){ return new Intl.DateTimeFormat(loc(),{weekday:"long",day:"numeric",month:"long"}).format(new Date(key+"T12:00"))+" · "+CONFIG.time; }
+function openModal(m){ lastFocus=document.activeElement; m.hidden=false; const f=m.querySelector("input,button"); f&&f.focus(); }
+function closeModal(m){ m.hidden=true; lastFocus&&lastFocus.focus&&lastFocus.focus(); }
+function startJoin(key){
+  if(!db||!myId) return;
+  if(!nick){ toast(t("need_nick")); nickInput.focus(); return; }
+  const np=normPhone(phone);
+  if(!np){ toast(t("need_phone")); phoneInput.focus(); return; }
+  if(!consentBox.checked && myPhoneSaved!==np){ toast(t("need_consent")); consentBox.focus(); return; }
+  pendingKey=key; mrOk.checked=false; mrGo.disabled=true;
+  document.getElementById("mr-date").textContent=fmtGame(key);
+  const today=keyOf(new Date()); const mine=docs.find(x=>x.uid===myId);
+  const veteran=!!(mine&&(mine.dates||[]).some(k=>k<today));
+  document.getElementById(veteran?"mt-1":"mt-2").checked=true;
+  [1,2].forEach(tb=>{ const n=playersFor(key,tb).length; const el=document.getElementById("mt-"+tb+"-free");
+    el.textContent = n<CONFIG.seats ? t("mtb_free").replace("{n}",CONFIG.seats-n) : t("mtb_wait");
+    document.getElementById("mt-"+tb).disabled = n>=CONFIG.seats+CONFIG.waitlist; });
+  openModal(mRules);
+}
+mrOk.addEventListener("change",()=>{ mrGo.disabled=!mrOk.checked; });
+document.getElementById("mr-cancel").addEventListener("click",()=>closeModal(mRules));
+document.getElementById("mr-full").addEventListener("click",()=>{ mRules.hidden=true; });
+mrGo.addEventListener("click",async()=>{
+  if(!mrOk.checked||!pendingKey) return;
+  mrGo.disabled=true;
+  const key=pendingKey; const sel=document.querySelector('input[name="mt"]:checked'); const tb=sel&&sel.value==="1"?1:2;
+  const others=playersFor(key,tb).filter(p=>p.uid!==myId).length;
+  const ok=await toggle(key,false,tb);
+  mRules.hidden=true;
+  if(ok) openDone(key, others+1, tb);
+  else mrGo.disabled=false;
+});
+function openDone(key,pos,tb){
+  document.getElementById("md-date").textContent=fmtGame(key);
+  document.getElementById("md-seat").textContent = (pos<=CONFIG.seats ? t("md_seat").replace("{n}",pos) : t("md_wait").replace("{n}",pos-CONFIG.seats)).replace("{t}",tb);
+  const box=document.getElementById("md-actions"); box.textContent="";
+  const g=document.createElement("a"); g.className="btn"; g.href=googleCal(key); g.target="_blank"; g.rel="noopener"; g.textContent=t("cal_g");
+  const w=document.createElement("a"); w.className="btn wa-btn"; w.href=CONFIG.whatsappGroup; w.target="_blank"; w.rel="noopener"; w.textContent=t("wa_btn");
+  const c=document.createElement("button"); c.type="button"; c.className="btn primary"; c.textContent=t("md_close"); c.addEventListener("click",()=>closeModal(mDone));
+  const seat = pos<=CONFIG.seats ? t("seat_n").replace("{n}",pos) : t("seat_w").replace("{n}",pos-CONFIG.seats);
+  const [yy,mo,dd]=key.split("-"); const msg=t("notify_msg").replace("{d}",dd+"."+mo).replace("{t}",tb).replace("{seat}",seat).replace("{name}",nick||"");
+  const nb=document.createElement("a"); nb.className="btn wa-btn"; nb.href="https://wa.me/"+CONFIG.adminPhone+"?text="+encodeURIComponent(msg); nb.target="_blank"; nb.rel="noopener"; nb.textContent=t("notify_btn");
+  const hint=document.createElement("p"); hint.className="note"; hint.textContent=t("notify_hint");
+  w.className="btn";
+  box.append(hint,nb,w,g,c);
+  openModal(mDone);
+}
+/* ---------- cancel dialog ---------- */
+const mCancel=document.getElementById("m-cancel");
+function ddmm(key){ const [y,m,d]=key.split("-"); return d+"."+m; }
+function openCancel(focusKey){
+  const body=document.getElementById("mc-body"), act=document.getElementById("mc-actions"); body.textContent=""; act.textContent="";
+  const close=document.createElement("button"); close.type="button"; close.className="btn"; close.textContent=t("mc_close"); close.addEventListener("click",()=>closeModal(mCancel));
+  if(!db||!myId){ const p=document.createElement("p"); p.className="mc-empty"; p.textContent=t("mc_signin"); body.append(p);
+    const w=document.createElement("a"); w.className="btn wa-btn"; w.href="https://wa.me/"+CONFIG.adminPhone; w.target="_blank"; w.rel="noopener"; w.textContent="WhatsApp"; act.append(w,close); openModal(mCancel); return; }
+  const keys=upcoming().map(keyOf).filter(k=>myPlace(k));
+  if(!keys.length){ const p=document.createElement("p"); p.className="mc-empty"; p.textContent=t("mc_empty"); body.append(p);
+    const j=document.createElement("a"); j.className="btn primary"; j.href="#schedule"; j.textContent=t("hdr_cta"); j.addEventListener("click",()=>closeModal(mCancel)); act.append(j,close); openModal(mCancel); return; }
+  keys.forEach(k=>{ const me=myPlace(k);
+    const it=document.createElement("div"); it.className="mc-item";
+    const info=document.createElement("div"); const b=document.createElement("b"); b.textContent=fmtGame(k);
+    const sm=document.createElement("small"); sm.textContent=(me.idx<CONFIG.seats? t("md_seat").replace("{n}",me.idx+1) : t("md_wait").replace("{n}",me.idx-CONFIG.seats+1)).replace("{t}",me.table);
+    info.append(b,sm);
+    const cb=document.createElement("button"); cb.type="button"; cb.className="btn small"; cb.textContent=t("mc_cancel");
+    cb.addEventListener("click",()=>{ cb.hidden=true;
+      const row=document.createElement("div"); row.className="mc-confirm";
+      const q=document.createElement("span"); q.textContent=t("mc_sure");
+      const y=document.createElement("button"); y.type="button"; y.className="btn small primary"; y.textContent=t("mc_yes");
+      const n=document.createElement("button"); n.type="button"; n.className="btn small"; n.textContent=t("mc_no");
+      n.addEventListener("click",()=>{ row.remove(); cb.hidden=false; });
+      y.addEventListener("click",async()=>{ y.disabled=true; const tb=me.table; const ok=await toggle(k,true);
+        if(ok){ it.textContent=""; const done=document.createElement("p"); done.className="mc-empty"; done.textContent=t("mc_done");
+          const msg=t("mc_msg").replace("{d}",ddmm(k)).replace("{t}",tb).replace("{name}",nick||"");
+          const w=document.createElement("a"); w.className="btn small wa-btn"; w.href="https://wa.me/"+CONFIG.adminPhone+"?text="+encodeURIComponent(msg); w.target="_blank"; w.rel="noopener"; w.textContent=t("mc_notify");
+          it.append(done,w); } else y.disabled=false; });
+      row.append(q,y,n); it.append(row); y.focus(); });
+    it.append(info,cb); body.append(it);
+    if(focusKey===k) setTimeout(()=>cb.click(),0);
+  });
+  act.append(close); openModal(mCancel);
+}
+document.querySelectorAll(".js-cancel").forEach(b=>b.addEventListener("click",()=>{ if(typeof setMenu==="function") setMenu(false); openCancel(); }));
+[mRules,mDone,mCancel].forEach(m=>{ m.addEventListener("click",e=>{ if(e.target===m) closeModal(m); }); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ if(!mRules.hidden) closeModal(mRules); if(!mDone.hidden) closeModal(mDone); if(!mCancel.hidden) closeModal(mCancel); } });
+async function removeOther(p,key){
+  if(!db) return;
+  const dates=(p.dates||[]).filter(k=>k!==key); const ts={...(p.ts||{})}; delete ts[key]; const tables={...(p.tables||{})}; delete tables[key];
+  try{ await db.collection("signups").doc(p.uid).set({...p,dates,ts,tables,updatedAt:Date.now()}); }catch(e){ toast(t("err")); }
+}
+
+/* ---------- admin tabs + WhatsApp composer ---------- */
+let tab="crm"; try{ tab=localStorage.getItem("mk_tab")||"crm" }catch(e){}
+function setTab(x){ tab=x; try{localStorage.setItem("mk_tab",x)}catch(e){}
+  document.getElementById("pane-crm").hidden = x!=="crm"; document.getElementById("pane-msg").hidden = x!=="msg"; document.getElementById("pane-photo").hidden = x!=="photo";
+  document.querySelectorAll(".adm-tabs [data-tab]").forEach(b=>b.setAttribute("aria-selected", b.dataset.tab===x)); }
+document.querySelectorAll(".adm-tabs [data-tab]").forEach(b=>b.addEventListener("click",()=>setTab(b.dataset.tab)));
+setTab(tab);
+
+const MSG = {
+ ru:{
+  announce:(g)=>`🎭 *Мафия · ${g.day}, ${g.time}*\n📍 ${CONFIG.place.ru}\n\n🎲 Стол №1 (основной): ${g.T[0].n}/${g.seats}${g.T[0].free>0?` — свободно *${g.T[0].free}*`:" — собран"}\n🎓 Стол №2 (новички и обучение): ${g.T[1].n}/${g.seats}${g.T[1].free>0?` — свободно *${g.T[1].free}*`:" — собран"}\n\nВпервые? Записывайтесь за стол №2 — ведущий всему научит.\nЗапись: ${CONFIG.siteUrl}`,
+  lineup:(g)=>`📋 *Рассадка · ${g.day}, ${g.time}*\n\n🎲 *Стол №1*\n${g.T[0].lines||"—"}${g.T[0].wait?`\n⏳ Ожидание:\n${g.T[0].wait}`:""}\n\n🎓 *Стол №2 (новички)*\n${g.T[1].lines||"—"}${g.T[1].wait?`\n⏳ Ожидание:\n${g.T[1].wait}`:""}\n\nЕсли не сможете прийти — отмените запись на сайте, чтобы место занял следующий.`,
+  remind:(g)=>`⏰ *Сегодня мафия в ${g.time}!*\nСбор с ${g.gather}, начинаем ровно в ${g.time}.\nСтол №1: ${g.T[0].n}/${g.seats} · Стол №2: ${g.T[1].n}/${g.seats}.${(g.T[0].free+g.T[1].free)>0?` Есть ещё места — зовите друзей.`:""}\n\n${CONFIG.siteUrl}`,
+  free:()=>``
+ },
+ tr:{
+  announce:(g)=>`🎭 *Mafya · ${g.day}, ${g.time}*\n📍 ${CONFIG.place.tr}\n\n🎲 1 numaralı masa (ana): ${g.T[0].n}/${g.seats}${g.T[0].free>0?` — boş *${g.T[0].free}*`:" — doldu"}\n🎓 2 numaralı masa (yeni başlayanlar): ${g.T[1].n}/${g.seats}${g.T[1].free>0?` — boş *${g.T[1].free}*`:" — doldu"}\n\nİlk kez mi? 2 numaralı masaya kaydol — yönetici her şeyi öğretir.\nKayıt: ${CONFIG.siteUrl}`,
+  lineup:(g)=>`📋 *Oturma düzeni · ${g.day}, ${g.time}*\n\n🎲 *1 numaralı masa*\n${g.T[0].lines||"—"}${g.T[0].wait?`\n⏳ Bekleyen:\n${g.T[0].wait}`:""}\n\n🎓 *2 numaralı masa (yeni başlayanlar)*\n${g.T[1].lines||"—"}${g.T[1].wait?`\n⏳ Bekleyen:\n${g.T[1].wait}`:""}\n\nGelemeyeceksen kaydını sitede iptal et, yerin sıradakine geçsin.`,
+  remind:(g)=>`⏰ *Bugün saat ${g.time}'da mafya!*\nBuluşma ${g.gather}'ten itibaren, oyun tam ${g.time}'da başlar.\n1. masa: ${g.T[0].n}/${g.seats} · 2. masa: ${g.T[1].n}/${g.seats}.${(g.T[0].free+g.T[1].free)>0?` Hâlâ yer var — arkadaşlarını çağır.`:""}\n\n${CONFIG.siteUrl}`,
+  free:()=>``
+ }
+};
+const msgText=document.getElementById("msg-text"), msgType=document.getElementById("msg-type"), msgLang=document.getElementById("msg-lang");
+let msgEdited=false;
+msgText.addEventListener("input",()=>{ msgEdited=true; updateSendLink(); });
+function gameInfo(key, L){
+  const d=new Date(key+"T12:00");
+  const T=[1,2].map(tb=>{ const l=playersFor(key,tb); const mn=l.slice(0,CONFIG.seats), w=l.slice(CONFIG.seats);
+    return {n:mn.length, free:CONFIG.seats-mn.length, lines:mn.map((p,i)=>`${i+1}. ${p.name||"—"}`).join("\n"), wait:w.map((p,i)=>`${i+1}. ${p.name||"—"}`).join("\n")}; });
+  const list=playersFor(key,1); const main=list.slice(0,CONFIG.seats), wait=list.slice(CONFIG.seats);
+  const [hh,mm]=CONFIG.time.split(":").map(Number); const g=new Date(2000,0,1,hh,mm-15);
+  return { day:new Intl.DateTimeFormat(L==="ru"?"ru-RU":"tr-TR",{weekday:"long",day:"numeric",month:"long"}).format(d),
+    time:CONFIG.time, gather:pad(g.getHours())+":"+pad(g.getMinutes()), seats:CONFIG.seats, inTable:main.length, free:CONFIG.seats-main.length,
+    lines:main.map((p,i)=>`${i+1}. ${p.name||"—"}`).join("\n"), waitLines:wait.map((p,i)=>`${i+1}. ${p.name||"—"}`).join("\n"), T };
+}
+function buildMsg(){
+  const key=admSel.value; if(!key){ return ""; }
+  const type=msgType.value, L=msgLang.value;
+  const one=l=>MSG[l][type](gameInfo(key,l));
+  if(type==="free") return msgText.value;
+  return L==="both" ? one("ru")+"\n\n— — —\n\n"+one("tr") : one(L);
+}
+function updateSendLink(){ document.getElementById("msg-send").href="https://wa.me/?text="+encodeURIComponent(msgText.value); }
+function refreshMsg(force){ if(force||!msgEdited){ msgText.value=buildMsg(); msgEdited=false; } updateSendLink(); }
+msgType.addEventListener("change",()=>refreshMsg(true));
+msgLang.addEventListener("change",()=>refreshMsg(true));
+admSel.addEventListener("change",()=>refreshMsg(true));
+document.getElementById("msg-reset").addEventListener("click",()=>refreshMsg(true));
+document.getElementById("msg-copy").addEventListener("click",()=>copyText(msgText.value));
+try{ msgLang.value = lang; }catch(e){}
+
+/* ---------- hero atmosphere (shown until a photo is uploaded) ---------- */
+function paintHero(){
+  const c=document.getElementById("hero-canvas"); const r=c.getBoundingClientRect(); const dpr=Math.min(2,window.devicePixelRatio||1);
+  c.width=Math.max(1,r.width*dpr); c.height=Math.max(1,r.height*dpr); const x=c.getContext("2d"); x.scale(dpr,dpr);
+  const W=r.width,H=r.height; const g=x.createLinearGradient(0,0,W,H); g.addColorStop(0,"#2a1712"); g.addColorStop(.55,"#160f0c"); g.addColorStop(1,"#0d0908"); x.fillStyle=g; x.fillRect(0,0,W,H);
+  let seed=7; const rnd=()=>((seed=(seed*16807)%2147483647)/2147483647);
+  const warm=["255,190,120","255,150,90","230,120,70","255,215,160"];
+  for(let i=0;i<70;i++){ const px=rnd()*W, py=rnd()*H*.75, rad=8+rnd()*Math.min(90,W*.08), a=.04+rnd()*.16;
+    const col=warm[Math.floor(rnd()*warm.length)]; const rg=x.createRadialGradient(px,py,0,px,py,rad);
+    rg.addColorStop(0,`rgba(${col},${a})`); rg.addColorStop(.7,`rgba(${col},${a*.5})`); rg.addColorStop(1,`rgba(${col},0)`); x.fillStyle=rg; x.beginPath(); x.arc(px,py,rad,0,Math.PI*2); x.fill(); }
+  const lamp=x.createRadialGradient(W*.72,H*.35,0,W*.72,H*.35,Math.max(W,H)*.5); lamp.addColorStop(0,"rgba(196,53,43,.22)"); lamp.addColorStop(1,"rgba(196,53,43,0)"); x.fillStyle=lamp; x.fillRect(0,0,W,H);
+}
+try{ matchMedia("(max-width:860px)").addEventListener("change",()=>{ if(window.__booted) renderPhotos(); }); }catch(e){}
+paintHero(); addEventListener("resize",()=>{ clearTimeout(window.__ph); window.__ph=setTimeout(paintHero,150); });
+
+const DEFAULT_IMG={"hero": "/img/d038708df4.jpg", "g1": "/img/e38fb674e4.jpg", "g2": "/img/1949010681.jpg", "g3": "/img/d39e34eba5.jpg"};
+DEFAULT_IMG.heroM="/img/4709a58876.jpg";
+DEFAULT_IMG.n1="/img/939ea16d74.jpg";
+DEFAULT_IMG.n2="/img/bb0c03c25a.jpg";
+DEFAULT_IMG.n3="/img/6197721403.jpg";
+DEFAULT_IMG.b1="/img/d2832ddbdb.jpg";
+DEFAULT_IMG.b2="/img/66b13af19b.jpg";
+DEFAULT_IMG.b3="/img/0ac5497634.jpg";
+DEFAULT_IMG.deck="/img/c63f570442.jpg";
+const DEFAULT_GAL=[{url:DEFAULT_IMG.g1,cap:{ru:"Ведущий раздаёт роли",tr:"Yönetici rolleri dağıtıyor"}},{url:DEFAULT_IMG.n1,cap:{ru:"Ночь. Город засыпает",tr:"Gece. Şehir uyuyor"}},{url:DEFAULT_IMG.n3,cap:{ru:"Игрок №7 защищается",tr:"7 numara savunmada"}},{url:DEFAULT_IMG.g2,cap:{ru:"Чёрная карта — вы в мафии",tr:"Siyah kart — mafyadasın"}},{url:DEFAULT_IMG.n2,cap:{ru:"Карта босса мафии",tr:"Mafya Boss'unun kartı"}},{url:DEFAULT_IMG.g3,cap:{ru:"Стол готов к игре",tr:"Masa oyuna hazır"}},{url:DEFAULT_IMG.deck,wide:true,cap:{ru:"Колода клуба: мирные, шериф, мафия и босс",tr:"Kulüp destesi: vatandaş, şerif, mafya ve boss"}}];
+const BLOG_IMG=[DEFAULT_IMG.b1,DEFAULT_IMG.b2,DEFAULT_IMG.b3];
+let site={hero:null,gallery:[]}; let assets=null;
+function renderPhotos(){
+  const hi=document.getElementById("hero-img");
+  const heroUrl=(site.hero&&site.hero.url)||(matchMedia("(max-width:860px)").matches?DEFAULT_IMG.heroM:DEFAULT_IMG.hero);
+  if(hi.dataset.src!==heroUrl){ hi.dataset.src=heroUrl; const im=new Image(); im.onload=()=>{ hi.style.backgroundImage=`url("${heroUrl}")`; hi.classList.add("on"); }; im.src=heroUrl; }
+  const gw=document.getElementById("gallery-wrap"), gal=document.getElementById("gallery"); gal.textContent="";
+  const list=(site.gallery&&site.gallery.length)?site.gallery:DEFAULT_GAL;
+  list.forEach(p=>{ const f=document.createElement("figure"); if(p.wide) f.className="wide"; const im=document.createElement("img"); im.src=p.url; im.alt=p.cap?p.cap[lang]:""; f.append(im);
+    if(p.cap){ const c=document.createElement("figcaption"); c.textContent=p.cap[lang]; f.append(c); } gal.append(f); });
+  gw.hidden=false;
+  if(!isAdmin) return;
+  document.getElementById("hero-prev").style.backgroundImage = `url("${heroUrl}")`;
+  const ag=document.getElementById("adm-gal"); ag.textContent="";
+  (site.gallery||[]).forEach(p=>{ const f=document.createElement("figure"); const im=document.createElement("img"); im.src=p.url; im.alt="";
+    const b=document.createElement("button"); b.type="button"; b.textContent=t("ph_del"); b.addEventListener("click",()=>removeGal(p.id)); f.append(im,b); ag.append(f); });
+}
+async function saveSite(next){ if(!db) return; await db.collection("settings").doc("site").set({hero:next.hero||null,gallery:next.gallery||[],updatedAt:Date.now()}); }
+async function upload(file){ const r=await assets.upload(file); return {id:r.id,url:r.url}; }
+document.getElementById("up-hero").addEventListener("change",async e=>{
+  const f=e.target.files[0]; const st=document.getElementById("up-hero-st"); if(!f||!assets) return; st.textContent=t("ph_up");
+  try{ const old=site.hero; const h=await upload(f); await saveSite({...site,hero:h}); if(old&&old.id){ assets.delete(old.id).catch(()=>{}); } st.textContent=t("ph_ok"); }
+  catch(err){ st.textContent=t("ph_err"); } e.target.value="";
+});
+document.getElementById("up-gal").addEventListener("change",async e=>{
+  const files=[...e.target.files]; const st=document.getElementById("up-gal-st"); if(!files.length||!assets) return; st.textContent=t("ph_up");
+  try{ const added=[]; for(const f of files){ added.push(await upload(f)); } await saveSite({...site,gallery:[...(site.gallery||[]),...added].slice(-12)}); st.textContent=t("ph_ok"); }
+  catch(err){ st.textContent=t("ph_err"); } e.target.value="";
+});
+async function removeGal(id){ try{ await saveSite({...site,gallery:(site.gallery||[]).filter(p=>p.id!==id)}); assets&&assets.delete(id).catch(()=>{}); }catch(e){ toast(t("err")); } }
+
+/* ---------- spotlight + tilt on cards ---------- */
+document.addEventListener("pointermove",e=>{
+  const card=e.target.closest(".game,.role,.post"); if(!card) return;
+  card.classList.add("spot");
+  const r=card.getBoundingClientRect(); const mx=e.clientX-r.left, my=e.clientY-r.top;
+  card.style.setProperty("--mx",mx+"px"); card.style.setProperty("--my",my+"px");
+  if(card.classList.contains("game")||card.classList.contains("role")){ card.classList.add("tilt");
+    card.style.setProperty("--ry",((mx/r.width)-.5)*5+"deg"); card.style.setProperty("--rx",(.5-(my/r.height))*5+"deg"); }
+});
+document.addEventListener("pointerout",e=>{ const c=e.target.closest&&e.target.closest(".game,.role"); if(c&&!c.contains(e.relatedTarget)){ c.style.setProperty("--rx","0deg"); c.style.setProperty("--ry","0deg"); } });
+
+document.getElementById("copy-phone").addEventListener("click",()=>copyText("+905393841009"));
+/* ---------- burger menu ---------- */
+const hdr=document.querySelector("header.top"), burger=document.getElementById("burger");
+function setMenu(open){ hdr.classList.toggle("open",open); burger.setAttribute("aria-expanded",open?"true":"false"); document.body.style.overflow=open?"hidden":""; }
+burger.addEventListener("click",()=>setMenu(!hdr.classList.contains("open")));
+document.querySelectorAll("nav.menu a").forEach(a=>a.addEventListener("click",()=>setMenu(false)));
+document.querySelector(".hdr-cta").addEventListener("click",()=>setMenu(false));
+addEventListener("hashchange",()=>setMenu(false));
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&hdr.classList.contains("open")) setMenu(false); });
+/* ---------- magnetic buttons ---------- */
+if(matchMedia("(pointer:fine)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches){
+  let mag=null;
+  document.addEventListener("pointermove",e=>{ const b=e.target.closest&&e.target.closest(".btn.primary,.hdr-cta");
+    if(mag&&mag!==b){ mag.style.removeProperty("--bx"); mag.style.removeProperty("--by"); mag=null; }
+    if(!b) return; mag=b; const r=b.getBoundingClientRect(); const dx=(e.clientX-(r.left+r.width/2))/r.width, dy=(e.clientY-(r.top+r.height/2))/r.height;
+    b.style.setProperty("--bx",(dx*10).toFixed(1)+"px"); b.style.setProperty("--by",(dy*8).toFixed(1)+"px"); });
+}
+
+/* ---------- boot ---------- */
+window.__booted=true; applyI18n(); route(); renderPhotos();
+
+(async()=>{
+  const slow=setTimeout(()=>{ if(!dbReady){ setNote(db?"db_slow":"db_off"); } },10000);
+  try{
+    const [dbNs,userNs]=await Promise.all([window.claude?.use?.("db"),window.claude?.use?.("user")]);
+    db=dbNs||null;
+    if(userNs){ myId=await userNs.id(); isOwner=await userNs.isOwner().catch(()=>false); isAdmin=isOwner || await userNs.canEdit().catch(()=>false); }
+    authChecked=true; route();
+    if(!db||!myId){ db=null; isAdmin=false; authChecked=true; route(); clearTimeout(slow); setNote("db_off"); renderGames(); return; }
+    db.collection("signups").onSnapshot(snap=>{
+      clearTimeout(slow); dbReady=true;
+      docs=snap.docs.map(d=>({uid:d.id,...(d.data()||{})}));
+      const me=docs.find(x=>x.uid===myId);
+      if(me && !nick){ nick=me.name||""; nickInput.value=nick; }
+      setNote("db_ok"); renderGames();
+    }, ()=>{ clearTimeout(slow); setNote("db_slow"); });
+    db.collection("phones").doc(myId).get().then(s=>{ if(s.exists){ const d=s.data()||{}; myPhoneSaved=d.phone||null; if(!phone&&d.phone){ phone=d.phone; phoneInput.value=phone; } consentBox.checked=!!d.consent; } }).catch(()=>{});
+    db.collection("settings").doc("site").onSnapshot(s=>{ site=s.exists?(s.data()||{}):{hero:null,gallery:[]}; renderPhotos(); },()=>{});
+    if(isAdmin){ window.claude.use("assets").then(a=>{ assets=a; if(!a){ document.getElementById("up-hero").disabled=true; document.getElementById("up-gal").disabled=true; } }); }
+    if(isAdmin){ db.collection("phones").onSnapshot(snap=>{ phones={}; snap.docs.forEach(d=>phones[d.id]=d.data()||{}); renderAdmin(); },()=>{}); }
+  }catch(e){ clearTimeout(slow); db=null; authChecked=true; route(); setNote("db_off"); renderGames(); }
+})();
+</script>
+
+</body>
+</html>
